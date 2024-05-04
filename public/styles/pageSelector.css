@@ -1,0 +1,27 @@
+.shape-container{
+    display: block;
+    border: 1px solid #4831d4;
+    width: clamp(0.52vw, 0.52vw, 7px); /* min: 0.52vw, max 7px*/
+    height: clamp(0.52vw, 0.52vw, 7px);
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+.square{
+    transform: rotate(90deg) scale(1.8);
+    background-color: transparent;
+}
+
+.rhombus{
+    transform: rotate(45deg);
+    background-color: #4831d4;
+}
+.rhombus-green{
+    transform: rotate(45deg);
+    background-color: #ccf381;
+    border: 1px solid #ccf381;
+}
+.square-green{
+    transform: rotate(90deg) scale(1.8);
+    background-color: transparent;
+    border: 1px solid #ccf381;
+}

@@ -1,0 +1,129 @@
+.section-body-a-container{
+    padding: 40px 60px;
+}
+
+.section-body-a{
+    display: flex;
+    flex-direction: column;
+}
+
+.body-a-block-a, .body-a-block-b{
+    display: flex;
+}
+.body-a-block-a-filler, .body-a-block-b-filler{
+    display: none;
+}
+
+.body-a-title{
+    color: #4831d4;
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+.body-a-block-a p, .body-a-block-b p{
+    margin-top: 0;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 300;
+}
+
+
+@media only screen and (min-width: 576px){
+}
+
+@media only screen and (min-width: 768px){
+    
+    .section-body-a-container{
+        height: 100vh;
+        display: flex; 
+        align-items: center; 
+        padding: 5.22vw 7.82vw;
+    }
+    
+    .section-body-a{
+        width: 100%; 
+    }
+    
+    .body-a-block-a, .body-a-block-b{
+        justify-content: space-between;
+        flex-grow: 1;
+        flex-basis: 50%;
+    }
+    
+    .body-a-block-a-info, .body-a-block-b-info{
+        width: 35vw;
+    }
+    .body-a-block-a-info{
+        position: relative;
+    }
+    
+    .body-a-title{
+        position: relative;
+        font-size: 3.91vw;
+        margin-bottom: 1.30vw;
+        z-index: 2;
+    }
+    
+    .body-a-block-a-filler, .body-a-block-b-filler{
+        display: flex;
+
+    }
+    .body-a-block-b-filler{
+        align-items:center;
+        margin-left: auto;
+    }
+
+    .body-b-zigzag-svg-2{
+        width: 3.91vw;
+        min-width: 30px;
+        height: 3.91vw;
+        min-height: 30px;
+        transform: rotate(90deg) scaleY(-1);
+        align-self:flex-end;
+        margin-right: 13vw;
+    }
+
+    .circles-svg{
+        width: 6.25vw;
+        height: 1.5625vw;
+        margin-right: 6vw;
+    }
+
+    .body-a-dots-svg-2{
+        margin-right: 13vw;
+    }
+
+    .body-a-dots-svg-1, .body-a-dots-svg-2{
+        width: 10.95vw;
+        max-width: 90px;
+        height: 10.95vw;
+        max-height: 90px;
+    }
+    
+    .baseline-container img{
+        align-self: baseline;
+    }
+
+    
+    .body-a-block-a p, .body-a-block-b p{
+        margin-top: 0;
+        font-size: 10px;
+        line-height: 16px;
+        font-weight: 300;
+    }
+    
+    .body-a-dots-svg-1{
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(50px, -30px);
+        z-index: 1;
+    }
+    .body-a-dots-svg-2{
+        display: block;
+    }
+
+}

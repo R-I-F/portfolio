@@ -1,0 +1,68 @@
+/*
+    green: #ccf381
+    rgba(204,243,129,255)
+
+    lighter green: #bcdd8b
+    rgba(188,221,139,255)
+
+
+    blue: #4831d4
+    rgba(72,49,212,255)
+
+    lighter blue: #6a64be
+    rgba(106,100,190,255)
+
+    text: #8a729e
+    rgba(138,114,158,255)
+
+    grey dots: #a2b59c
+
+    white: #fbfbfb
+    rgb(251,251,251)
+
+*/
+*, *::before, *::after
+{
+    box-sizing: border-box;  
+}
+
+body 
+{
+    margin: 0;
+    background-color:  #fbfbfb;
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    color: #4d4058;
+    /* overflow-y: auto; */
+}
+body::-webkit-scrollbar {
+    display: none;
+  }
+
+.page-container{
+    position: relative;
+}
+
+.pageSelector-container{
+    display: none;
+}
+
+
+@media only screen and (min-width: 576px){
+
+}
+
+@media only screen and (min-width: 768px){
+    .pageSelector-container{
+        display: block;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        transform: translate(-6.51vw, -6.51vw);
+    }
+    .pageSelector{
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1.56vw, 1.56vw, 20px); /*1.56vw to 20px*/
+    }
+}

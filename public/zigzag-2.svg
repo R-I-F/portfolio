@@ -1,0 +1,11 @@
+<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <!-- Define the zigzag line using a polyline element -->
+  <line x1="0" y1="0" x2="7" y2="0" stroke="#6a64be" stroke-width="2" />
+  <line x1="7" y1="0" x2="7" y2="7" stroke="#6a64be" stroke-width="1" />
+  <line x1="7" y1="7" x2="14" y2="7" stroke="#6a64be" stroke-width="1" />
+  <line x1="14" y1="7" x2="14" y2="14" stroke="#6a64be" stroke-width="1" />
+  <line x1="14" y1="14" x2="21" y2="14" stroke="#6a64be" stroke-width="1" />
+  <line x1="21" y1="14" x2="21" y2="21" stroke="#6a64be" stroke-width="1" />
+  <line x1="21" y1="21" x2="28" y2="21" stroke="#6a64be" stroke-width="1" />
+  <line x1="28" y1="21" x2="28" y2="28" stroke="#6a64be" stroke-width="1" />
+</svg>

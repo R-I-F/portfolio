@@ -1,0 +1,20 @@
+.section-body-b{
+
+    background-color: #4831d4;
+}
+
+
+@media only screen and (min-width: 576px){
+
+    
+}
+@media only screen and (min-width: 768px){
+
+    
+}
+@media only screen and (min-width: 1200px){
+
+    .section-body-b{
+        height: 100vh;
+    }
+}
