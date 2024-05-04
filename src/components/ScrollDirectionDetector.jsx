@@ -46,17 +46,11 @@ function ScrollDirectionDetector({setIsScrollingUp, setIsScrollingDown, currentS
 
     useEffect(() => {
         let falseSetterTimeout;
-        if (!shouldExecute) {
-            let currentTime = Date.now();
-            // console.log(`2nd useEffect - ${currentTime-programStart}ms\n\t shouldExecute = ${shouldExecute}`)
-            setShouldExecute(true);
             falseSetterTimeout = setTimeout(() => {
                 // console.log('buffering timeout logging, scroll reset');
                 setShouldExecute(false);
-                currentTime = Date.now();
                 // console.log(`2nd useEffect - ${currentTime-programStart}\n\t shouldExecute = ${shouldExecute}`)
             }, 100);
-        }
 
         return () => {
             clearTimeout(falseSetterTimeout);

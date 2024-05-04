@@ -23,11 +23,11 @@ export default function SmoothScroll(){
     */
 
     React.useEffect(() => {
-        let timeoutId;
         const currentTime = Date.now()
         // console.log(`1st useEffect\t${currentTime-programStart}\n\t current scroll position is: ${currentScrollpos}`)
         const handleScroll = () => {
                 setCurrentScrollPos(window.scrollY);
+                setShouldExecute(true);
         };
         window.addEventListener('scroll', handleScroll);
 
@@ -35,7 +35,14 @@ export default function SmoothScroll(){
             1st
             this useEffect sets a new scroll position whenever a scroll event happens 
         */
+        
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
+    React.useEffect(()=>{
+        let timeoutId;
         const pageSection = Math.round((currentScrollpos) / viewportHeight) + 1;
         timeoutId = setTimeout(()=>{
             setCurrentPageSection(pageSection);
@@ -49,12 +56,11 @@ export default function SmoothScroll(){
            floor(currentScrllpos / viewportHeight) + 1
            with a slight delay of 20ms
        */
-        
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
+
+           return () => {
             clearTimeout(timeoutId);
         };
-    }, [currentScrollpos]);
+    },[currentScrollpos])
     
 
 
