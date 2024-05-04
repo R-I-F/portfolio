@@ -44,7 +44,7 @@ export default function SectionBodyA({name}){
                         />
                     </div>
                     <div className='body-a-block-b-info'>
-                        <h1 className='body-a-title'>Engineering</h1>
+                        <h1 className='body-a-title body-a-title-2'>Engineering</h1>
                         <p>Passionate about web development, I delved deep into complex algorithms, backend structures, and internet fundamentals. Alongside, I mastered a wide range of languages, libraries, and frameworks: JavaScript, React.js, Node.js, C#, SQL, Firebase, MongoDB, CSS, HTML, and OpenAI API integration.</p>
                     </div>
                 </div>

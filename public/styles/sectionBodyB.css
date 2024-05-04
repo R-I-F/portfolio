@@ -1,20 +1,94 @@
-.section-body-b{
-
+.section-body-b-container{
+    padding: 55px 60px;
     background-color: #4831d4;
+}
+
+.section-body-b{
+    height: 100%;
+    color: #fbfbfb;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-body-b-info-container{
+
+}
+
+.body-b-title{
+    color: #ccf381;
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+.section-body-b-info-container p{
+    font-family: 'Poppins';
+    font-weight: 400;
+    margin-top: 0;
+    font-size: 11px;
+    line-height: 18px;
+}
+.section-body-b-logo-container{
+    margin-top:40px ;
+    width: 115%;
+    align-self: center;
+    /* overflow: hidden; */
+    text-align: center;
+}
+.section-body-b-logo-container img{
+    width: 100%;
 }
 
 
 @media only screen and (min-width: 576px){
-
+    .section-body-b-container{
+        padding: 90px 65px;
+    }
+    .section-body-b-logo-container{
+        width: 100%;
+    }
+    .section-body-b-logo-container img{
+        width: 95%;
+    }
     
 }
 @media only screen and (min-width: 768px){
+    .section-body-b-container{
+        padding: 4.56vw 11.07vwpx auto ;
+        height: 100vh;
+    }
+    .section-body-b{
+        flex-direction: row;
+        align-items: center;
+    }
 
+    .section-body-b-info-container{
+        width: 40%;
+    }
+    .body-b-title{
+        font-size: 4.17vw;
+    }
+
+    .section-body-b-info-container p{
+        font-size: clamp(9px, 1.16vw, 14px);
+        line-height: clamp(15px, 1.95vw, 21px);
+    }
+
+    .section-body-b-logo-container{
+        margin-left: 50px;
+        margin-right: 40px;
+        margin-top:40px ;
+        width: 60%;
+        align-self: center;
+        /* overflow: hidden; */
+        text-align: center;
+    }
+    .section-body-b-logo-container img{
+        width: 100%;
+    }
     
 }
 @media only screen and (min-width: 1200px){
 
-    .section-body-b{
-        height: 100vh;
-    }
+
 }
