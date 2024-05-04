@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy } from 'react-scroll';
 import ScrollDirectionDetector from './ScrollDirectionDetector';
 
-export default function SmoothScroll(){
+export default function SmoothScroll({selectedPage, setSelectedPage}){
     let viewportHeight = window.innerHeight;
     const [currentPageSection, setCurrentPageSection] = React.useState(1);
     const [currentScrollpos, setCurrentScrollPos] = React.useState(0);
@@ -143,13 +143,32 @@ export default function SmoothScroll(){
     // console.log(`\tis Scrolling down ? ${isScrollingDown}`);
     // console.log(`\tis Scrolling up ? ${isScrollingUp}`);
 
-
+    function checkSelectedPage(){
+        if(selectedPage === 3){
+            return 3;
+        }
+        else if(selectedPage === 4){
+            return 4;
+        }
+        else if(selectedPage === 5){
+            return 5;
+        }
+    }
         if(currentPageSection === 1){
             if(isScrollingDown === true){
                 resetScroll();
+                if(selectedPage === 3){
+                    return 3;
+                }
+                else if(selectedPage === 4){
+                    return 4;
+                }
+                else if(selectedPage === 5){
+                    return 5;
+                }
+                else return 2;
                 // console.log(`\t setting next page index to 2 `)
-               return 2;
-               
+                
             }
             else if(isScrollingUp === true) {
                 resetScroll();
@@ -160,7 +179,13 @@ export default function SmoothScroll(){
         else if(currentPageSection === 2){
             if(isScrollingDown === true){
                 resetScroll();
-                return 3;
+                if(selectedPage === 4){
+                    return 4;
+                }
+                else if(selectedPage === 5){
+                    return 5;
+                }
+                else return 3;
             }
             // else if(currentScrollpos < (1.01 * viewportHeight) && currentScrollpos > (0.9 * viewportHeight)) {
             //     return 2;
@@ -174,14 +199,17 @@ export default function SmoothScroll(){
         else if(currentPageSection === 3){
             if(isScrollingDown === true){
                 resetScroll();
-                return 4;
+                if(selectedPage === 5){
+                    return 5;
+                }
+                else return 4;
             }
-            // else if(currentScrollpos < (2.01 * viewportHeight) && currentScrollpos > (1.9 * viewportHeight)) {
-            //     return 3;
-            // }
             else if(isScrollingUp === true){
                 resetScroll();
-                return 2;
+                if(selectedPage === 1){
+                    return 1;
+                }
+                else return 2;
             }
             else return 3;
         }
@@ -189,16 +217,28 @@ export default function SmoothScroll(){
             if(isScrollingDown === true){
                 return 5;
             }
-            // else if(currentScrollpos < (3.01 * viewportHeight) && currentScrollpos > (2.9 * viewportHeight)) {
-            //     return 4;
-            // }
             else if(isScrollingUp === true){
-                return 3;
+                if(selectedPage === 2){
+                    return 2;
+                }
+                else if(selectedPage === 1){
+                    return 1;
+                }
+                else return 3;
             }
             else return 4;
         }
         else if(currentPageSection === 5 && isScrollingDown === true){
-            return 4;
+            if(selectedPage === 3){
+                return 3;
+            }
+            else if(selectedPage === 2){
+                return 2;
+            }
+            else if(selectedPage === 1){
+                return 1;
+            }
+            else return 4;
         }
         else {
             console.log('\t\t\t\tcondition proximus')
@@ -251,7 +291,7 @@ export default function SmoothScroll(){
     // console.log(`next Page Section is ${nextSectionIndex}`)
     // console.log(`isScrollingUp ? ${isScrollingUp}`);
     // console.log(`isScrollingDown ? ${isScrollingDown}`)
-    console.log(`shouldExecute ? ${shouldExecute}`)
+    // console.log(`shouldExecute ? ${shouldExecute}`)
 
     return(<>
         <ScrollDirectionDetector 

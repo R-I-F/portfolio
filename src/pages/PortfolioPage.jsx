@@ -11,6 +11,7 @@ export default function PortfolioPage(){
     const getAllDocsInDb = React.useContext(fireBaseContext).getAllDocsInDb
     const [isBigScreen, setIsBigScreen] = React.useState(false);
     const [projectsArr, setProjectsArr] = React.useState();
+    const [selectedPage, setSelectedPage] = React.useState(1);
 
     React.useEffect(()=>{
         getAllDocsInDb()
@@ -38,16 +39,23 @@ export default function PortfolioPage(){
 
     return(
         <div>
-            {isBigScreen && <SmoothScroll />}
+            {
+                isBigScreen &&
+                <SmoothScroll 
+                selectedPage = {selectedPage}
+                setSelectedPage = {setSelectedPage}/>
+            }
             <SectionHeader 
             name = 'section1'/>
             <SectionBodyA 
             name = 'section2'/>
             <SectionBodyB
             name = 'section3'/>
-            {/* <div className="pageSelector-container">
-                <PageSelector />
-            </div> */}
+            <div className="pageSelector-container">
+                <PageSelector 
+                selectedPage = {selectedPage}
+                setSelectedPage = {setSelectedPage}/>
+            </div>
         </div>
 
     )
