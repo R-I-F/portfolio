@@ -6,12 +6,11 @@ import SectionBodyA from "../components/SectionBodyA";
 import SmoothScroll from "../components/SmoothScroll";
 import SectionBodyB from "../components/SectionBodyB";
 
-export default function PortfolioPage(){
+export default function PortfolioPage({selectedPage, setSelectedPage}){
     
     const getAllDocsInDb = React.useContext(fireBaseContext).getAllDocsInDb
     const [isBigScreen, setIsBigScreen] = React.useState(false);
     const [projectsArr, setProjectsArr] = React.useState();
-    const [selectedPage, setSelectedPage] = React.useState(1);
 
     React.useEffect(()=>{
         getAllDocsInDb()
