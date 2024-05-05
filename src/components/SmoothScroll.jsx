@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy } from 'react-scroll';
+import { Link, Button, Element, scroller, Events, animateScroll as scroll, scrollSpy } from 'react-scroll';
 import ScrollDirectionDetector from './ScrollDirectionDetector';
 
 export default function SmoothScroll({selectedPage, setSelectedPage}){
@@ -9,22 +9,48 @@ export default function SmoothScroll({selectedPage, setSelectedPage}){
     const [isScrollingUp, setIsScrollingUp] = React.useState(false);
     const [isScrollingDown, setIsScrollingDown] = React.useState(false);
     const [shouldExecute, setShouldExecute] = React.useState(false);
-    const [nextSectionIndex, setNextSectionIndex] = React.useState(1);
-    const programStart = Date.now();
+    const [isIpadScreen, setIsIpadScreen] = React.useState(false);
+
     /* 
     4th                            scrollToNextSection()
     
-    3rd                            nextSectionIndex 80ms
+    3rd                            setSelectedPage instant
     
     2nd    currentPageSection 20ms  isScrollingup (65ms)      isScrollingDown (65ms) 
     
     1st                            currentScrollPos instant
-    
+
+0   Zero                             detect screen type
     */
 
+    React.useEffect(()=>{
+        function handleOrientationChange() {
+            if (window.innerHeight > window.innerWidth) {
+                setIsIpadScreen(true);
+            } else {
+                setIsIpadScreen(false);
+            }
+        }
+    
+        function handleResize() {
+            handleOrientationChange();
+        }
+    
+        // Initial check
+        handleOrientationChange();
+    
+        window.addEventListener('orientationchange', handleOrientationChange);
+        window.addEventListener('resize', handleResize);
+    
+        return () => {
+            window.removeEventListener('orientationchange', handleOrientationChange);
+            window.removeEventListener('resize', handleResize);
+        };
+    },[])
+
+    
+
     React.useEffect(() => {
-        const currentTime = Date.now()
-        // console.log(`1st useEffect\t${currentTime-programStart}\n\t current scroll position is: ${currentScrollpos}`)
         const handleScroll = () => {
                 setCurrentScrollPos(window.scrollY);
                 setShouldExecute(true);
@@ -43,11 +69,17 @@ export default function SmoothScroll({selectedPage, setSelectedPage}){
 
     React.useEffect(()=>{
         let timeoutId;
-        const pageSection = Math.round((currentScrollpos) / viewportHeight) + 1;
+        const pageSection = calcPageSection();
+        function calcPageSection(){
+            if(isIpadScreen){
+                return(Math.round((currentScrollpos + 530) / viewportHeight) + 1 );
+            }
+            else{
+                return ( Math.round((currentScrollpos) / viewportHeight) + 1 );
+            }
+        }
         timeoutId = setTimeout(()=>{
             setCurrentPageSection(pageSection);
-            const currentTime = Date.now() 
-            // console.log(`2nd useEffect -\t${currentTime-programStart}ms \n\tcurrent page is ${currentPageSection}`);
         }, 20)
 
         /*
@@ -56,7 +88,6 @@ export default function SmoothScroll({selectedPage, setSelectedPage}){
            floor(currentScrllpos / viewportHeight) + 1
            with a slight delay of 20ms
        */
-
            return () => {
             clearTimeout(timeoutId);
         };
@@ -68,14 +99,13 @@ export default function SmoothScroll({selectedPage, setSelectedPage}){
         let timeoutId ;
         timeoutId = setTimeout(()=>{
             const currentTime = Date.now();
-            // console.log(`3rd useEffect -\t${currentTime-programStart}ms`);
             if(isScrollingDown || isScrollingUp){
-                setNextSectionIndex(calcNextPageSectionIndex());
+                calcPageSection();
             }
-        },80)
+        },0)
         /*
             3rd step
-            this useEffect sets a new value for next section index 
+            this useEffect calculates page section 
             whenever scrolling up or down / should execute changes 
         */
        return () => {
@@ -89,29 +119,23 @@ export default function SmoothScroll({selectedPage, setSelectedPage}){
         /* 
         4th
         this use effect invokes the scroll to next section function
-        whenever the nextSectionIndex Changes
-        the function checks the next section index and then scrolls to the adjacent position
+        whenever the selectedPage Changes
+        the function checks the selectedPage and then scrolls to the adjacent position
         */
-    },[nextSectionIndex])
+    },[selectedPage])
 
     React.useEffect(() => {
-    
-        // Registering the 'begin' event and logging it to the console when triggered.
+
         Events.scrollEvent.register('begin', (to, element) => {
-            console.log('begin')
         });
     
-        // Registering the 'end' event and logging it to the console when triggered.
         Events.scrollEvent.register('end', (to, element) => {
-            console.log('end')
             setShouldExecute(false);
             resetScroll()
         });
     
-        // Updating scrollSpy when the component mounts.
         scrollSpy.update();
     
-        // Returning a cleanup function to remove the registered events when the component unmounts.
         return () => {
           Events.scrollEvent.remove('begin');
           Events.scrollEvent.remove('end');
@@ -131,157 +155,166 @@ export default function SmoothScroll({selectedPage, setSelectedPage}){
     5 -> 4        |   5                  |    isScrollingUp   = true      |    3vh
     */
     function resetScroll(){
-        console.log(`resetting scroll`)
+        // console.log(`resetting scroll`)
         setIsScrollingDown(false);
         setIsScrollingUp(false);
         setShouldExecute(false);
    }
 
-   function calcNextPageSectionIndex(){
-    // console.log('calculating Next Page section Index')
-    // console.log(`\tcurrent page is ${currentPageSection}`);
-    // console.log(`\tis Scrolling down ? ${isScrollingDown}`);
-    // console.log(`\tis Scrolling up ? ${isScrollingUp}`);
-
-    function checkSelectedPage(){
-        if(selectedPage === 3){
-            return 3;
-        }
-        else if(selectedPage === 4){
-            return 4;
-        }
-        else if(selectedPage === 5){
-            return 5;
-        }
-    }
+   function calcPageSection(){
         if(currentPageSection === 1){
-            if(isScrollingDown === true){
+            if(isScrollingDown){
+                    if(selectedPage !== 2 && selectedPage !== 1){
+                        resetScroll();
+                        return;
+                    }
+                    else{
+                        setSelectedPage(2);
+                        resetScroll();
+                        return;
+                    }
+                }            
+            else if(isScrollingUp) {
+                setSelectedPage(1);
                 resetScroll();
-                if(selectedPage === 3){
-                    return 3;
-                }
-                else if(selectedPage === 4){
-                    return 4;
-                }
-                else if(selectedPage === 5){
-                    return 5;
-                }
-                else return 2;
-                // console.log(`\t setting next page index to 2 `)
-                
+                return;
             }
-            else if(isScrollingUp === true) {
-                resetScroll();
-                return 1;
+            else {
+                setSelectedPage(1);
+                return;
             }
-            else return 1;
         }
+
         else if(currentPageSection === 2){
-            if(isScrollingDown === true){
-                resetScroll();
-                if(selectedPage === 4){
-                    return 4;
-                }
-                else if(selectedPage === 5){
-                    return 5;
-                }
-                else return 3;
+            if(isScrollingDown){
+                    // console.log('here is the bug')
+                    if(selectedPage !== 3 && selectedPage !== 2){
+                        resetScroll();
+                        return;
+                    }
+                    else{
+                        console.log(`\tisScrollingDown ? ${isScrollingDown}`)
+                        console.log(`shouldExecute ? ${shouldExecute}`)
+                        setSelectedPage(3);
+                        resetScroll();
+                        return;
+                    }
             }
-            // else if(currentScrollpos < (1.01 * viewportHeight) && currentScrollpos > (0.9 * viewportHeight)) {
-            //     return 2;
-            // }
-            else if(isScrollingUp === true){
+            else if(isScrollingUp){
+                setSelectedPage(1);
                 resetScroll();
-                return 1;
+                return;
             }
-            else return 2;
+            else {
+                setSelectedPage(2);
+                return;
+            }
         }
+
         else if(currentPageSection === 3){
-            if(isScrollingDown === true){
-                resetScroll();
-                if(selectedPage === 5){
-                    return 5;
+            if(isScrollingDown){
+                if(selectedPage !== 4 && selectedPage !== 3){
+                    resetScroll();
+                    return;
                 }
-                else return 4;
-            }
-            else if(isScrollingUp === true){
-                resetScroll();
-                if(selectedPage === 1){
-                    return 1;
+                else{
+                    setSelectedPage(4);
+                    resetScroll();
+                    return;
                 }
-                else return 2;
             }
-            else return 3;
+            else if(isScrollingUp){
+                if(selectedPage !== 2 && selectedPage !== 3){
+                    resetScroll();
+                    return;
+                }
+                else{
+                    setSelectedPage(2);
+                    resetScroll();
+                    return;
+                }
+            }
+            else {
+                setSelectedPage(3);
+                return;
+            }
         }
+
         else if(currentPageSection === 4){
-            if(isScrollingDown === true){
-                return 5;
-            }
-            else if(isScrollingUp === true){
-                if(selectedPage === 2){
-                    return 2;
+            if(isScrollingDown){
+                if(selectedPage !== 5 && selectedPage !== 4){
+                    resetScroll();
+                    return;
                 }
-                else if(selectedPage === 1){
-                    return 1;
+                else{
+                    setSelectedPage(5);
+                    resetScroll();
+                    return;
                 }
-                else return 3;
             }
-            else return 4;
+            else if(isScrollingUp){
+                if(selectedPage !== 3 && selectedPage !== 4){
+                    resetScroll();
+                    return;
+                }
+                else{
+                    setSelectedPage(3);
+                    resetScroll();
+                    return;
+                }
+            }
+            else {
+                setSelectedPage(4);
+                resetScroll();
+                return 4;
+            }
         }
-        else if(currentPageSection === 5 && isScrollingDown === true){
-            if(selectedPage === 3){
-                return 3;
+
+        else if(currentPageSection === 5 ){
+            if(isScrollingUp){
+                if(selectedPage !== 4 && selectedPage !== 5){
+                    resetScroll();
+                    return;
+                }
+                else{
+                    setSelectedPage(4);
+                    resetScroll();
+                    return;
+                }
             }
-            else if(selectedPage === 2){
-                return 2;
+            else{
+                setSelectedPage(5);
+                resetScroll();
+                return;
             }
-            else if(selectedPage === 1){
-                return 1;
-            }
-            else return 4;
         }
+
         else {
             console.log('\t\t\t\tcondition proximus')
+            setSelectedPage(1);
             return 1;
         }
-
     }
-    
+        
     function scrollToNextSection(){
-        // console.log(`scrolling to next section\n\t section${nextSectionIndex}`)
         const options = {
             duration: 300,
             smooth: true,
         }
-        if( nextSectionIndex === 1 ){
-            // console.log('1')
-            scroll.scrollTo(0, options)
-            // setNextSectionIndex(null);
-            // setShouldExecute(false);
-            // setIsScrollingDown(false);
-            // setIsScrollingUp(false);
+        if( selectedPage === 1 ){
+            scroller.scrollTo('section1', options)
         }
-        else if( nextSectionIndex === 2 ){
-            // console.log('2')
-            scroll.scrollTo((( 1 * viewportHeight)+1), options)
-            setIsScrollingDown(false);
-            setIsScrollingUp(false);
-            // setNextSectionIndex(null);
+        else if( selectedPage === 2 ){
+            scroller.scrollTo('section2', options)
         }
-        else if( nextSectionIndex === 3 ){
-            // console.log('3')
-            scroll.scrollTo((( 2 * viewportHeight)+1), options)
-            // setNextSectionIndex(null);
+        else if( selectedPage === 3 ){
+            scroller.scrollTo('section3', options)
         }
-        else if( nextSectionIndex === 4 ){
-            // console.log('4')
-            scroll.scrollTo((( 3 * viewportHeight)+1), options)
-            // setNextSectionIndex(null);
+        else if( selectedPage === 4 ){
+            scroller.scrollTo('section4', options)
         }
-        else if( nextSectionIndex === 5 ){
-            // console.log('5')
-            scroll.scrollTo((( 4 * viewportHeight)+1), options)
-            // setNextSectionIndex(null);
+        else if( selectedPage === 5 ){
+            scroller.scrollTo('section5', options)
         }
     }
 
@@ -292,16 +325,15 @@ export default function SmoothScroll({selectedPage, setSelectedPage}){
     // console.log(`isScrollingUp ? ${isScrollingUp}`);
     // console.log(`isScrollingDown ? ${isScrollingDown}`)
     // console.log(`shouldExecute ? ${shouldExecute}`)
-
+    // console.log(`selected page is \t ${selectedPage}`)
+    // console.log(`is it Ipad vertical Screen ? ${isIpadScreen}`);
     return(<>
         <ScrollDirectionDetector 
         setIsScrollingUp={setIsScrollingUp}
         setIsScrollingDown={setIsScrollingDown}
         currentScrollpos = {currentScrollpos}
-        setNextSectionIndex = {setNextSectionIndex}
         shouldExecute = {shouldExecute}
         setShouldExecute={setShouldExecute}
-        programStart = {programStart}
         />
     </>)
 }

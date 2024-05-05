@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function ScrollDirectionDetector({setIsScrollingUp, setIsScrollingDown, currentScrollpos, setNextSectionIndex, shouldExecute, setShouldExecute, programStart}) {
-    // setShouldExecute(false);
+function ScrollDirectionDetector({setIsScrollingUp, setIsScrollingDown, currentScrollpos, shouldExecute, setShouldExecute}) {
     useEffect(() => {
 
         let lastScrollTop = window.scrollY;
@@ -9,22 +8,25 @@ function ScrollDirectionDetector({setIsScrollingUp, setIsScrollingDown, currentS
         const handleScroll = () => { 
 
             let scrollTop = window.scrollY;
-            let currentTime = Date.now()
-            // console.log(`2nd useEffect ${currentTime-programStart}ms\nHandlingScroll - \n\tCurrent Scrollposition = ${scrollTop} > Last Scroll Position = ${currentScrollpos} ?`)
+
             if ((scrollTop - lastScrollTop)> 30){
-                // console.log('\tscrolling down')
+                console.log('\tscrolling down')
                 setIsScrollingUp(false);
                 setIsScrollingDown(true);
                 setShouldExecute(false);
-            } else if ((scrollTop - lastScrollTop) < -30 ) {
-                // console.log('\tscrolling up')
+            } 
+            
+            else if ((scrollTop - lastScrollTop) < -30 ) {
+                console.log('\tscrolling up')
                 setIsScrollingUp(true);
                 setIsScrollingDown(false);
                 setShouldExecute(false);
             }
+
             else{
                 resetScroll();
             }
+
             lastScrollTop = scrollTop;
         };
         
@@ -42,38 +44,18 @@ function ScrollDirectionDetector({setIsScrollingUp, setIsScrollingDown, currentS
             clearTimeout(scrollTimeout);
         };
 
-    }, [shouldExecute]); // Empty dependency array to run the effect only once when the component mounts
+    }, [shouldExecute]); 
 
     useEffect(() => {
         let falseSetterTimeout;
             falseSetterTimeout = setTimeout(() => {
-                // console.log('buffering timeout logging, scroll reset');
                 setShouldExecute(false);
-                // console.log(`2nd useEffect - ${currentTime-programStart}\n\t shouldExecute = ${shouldExecute}`)
             }, 100);
 
         return () => {
             clearTimeout(falseSetterTimeout);
         };
     }, [window.scrollY]);
-
-    // React.useEffect(()=>{
-    //     console.log(`resetting should execute on scroll events`)
-    //     let resetTimeout;
-    //     clearTimeout(resetTimeout);
-    //     function resetShouldExecute(){
-    //         resetTimeout = setTimeout(()=>{
-    //             setShouldExecute(false);
-    //         },100)
-
-    //     }
-    //     window.addEventListener('scroll', resetShouldExecute)
-    //     return()=>{
-    //         window.removeEventListener('scroll', resetShouldExecute);
-    //         clearTimeout(resetTimeout);
-    //     }
-    // },[window.scrollY])
-    
 
     function resetScroll(){
         setIsScrollingDown(false);

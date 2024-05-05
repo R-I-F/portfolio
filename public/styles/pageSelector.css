@@ -1,8 +1,10 @@
+
 .shape-container{
-    display: block;
+    display: flex;
     border: 1px solid #4831d4;
-    width: clamp(0.52vw, 0.52vw, 7px); /* min: 0.52vw, max 7px*/
-    height: clamp(0.52vw, 0.52vw, 7px);
+    padding: 0;
+    width: clamp(0.55vw, 0.55vw, 9px); 
+    height: clamp(0.55vw, 0.55vw, 9px);
     cursor: pointer;
     transition: all 0.4s ease;
 }
