@@ -25,7 +25,7 @@ export default function Navigation({selectedPage}){
             window.removeEventListener('resize', stateSetter);
         }
     },[])
-
+    // console.log(clicked)
     function absolutePositionClass(){
         if(isMobileScreen){
             return ('absolute-position')

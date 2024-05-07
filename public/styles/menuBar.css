@@ -13,6 +13,10 @@
     background-color: #ffffff;
 }
 
+.menu-bar.closed{
+    right: 200%;
+}
+
 .menu-bar.open{
     opacity: 1;
 }

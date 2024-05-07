@@ -17,10 +17,17 @@
 
     grey dots: #a2b59c
 
+    absoluteWhite: #ffffff
+    rgba(255,255,255,255)
+
     white: #fbfbfb
     rgb(251,251,251)
 
+    pinkishWhite: #f9f9f9
+    rgba(249,249,249,255)
+
 */
+
 *, *::before, *::after
 {
     box-sizing: border-box;  

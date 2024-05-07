@@ -75,6 +75,12 @@ export default function PageSelector({selectedPage, setSelectedPage}){
             onClick={() => handleActive(3)}
             />
 
+<button
+            id = '4'
+            className = {`shape-container  ${activeClassSetter(4)}`}
+            onClick={() => handleActive(4)}
+            />
+
         </div>
     )
 }

@@ -6,7 +6,7 @@ export default function MenuBar({clicked}){
     const linkClass = `link ${clicked ? 'open' : ''}`
     const renderMenuBar = () => {
         return (
-          <div className={`menu-bar ${clicked ? 'open' : ''}`}>
+          <div className={`menu-bar ${clicked ? 'open' : 'closed'}`}>
 
             <h2 className='menu-bar-name'>Ibrahim</h2>
 
