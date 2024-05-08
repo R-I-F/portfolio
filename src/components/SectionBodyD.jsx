@@ -4,7 +4,7 @@ import '../../public/styles/sectionBodyD.css'
 import { FaLongArrowAltRight } from "react-icons/fa";
 import FormEl from "./FormEl";
 
-export default function SectionBodyD(){
+export default function SectionBodyD({name}){
     const [formData, setFormData] = React.useState({
         name: '',
         email: '',
