@@ -39,7 +39,7 @@ body
     background-color:  #fbfbfb;
     height: 100%;
     font-family: 'Inter', sans-serif;
-    color: #4d4058;
+    color: rgb(61,21,95); 
     /* overflow-y: auto; */
 }
 body::-webkit-scrollbar {

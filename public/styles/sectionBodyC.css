@@ -110,6 +110,7 @@
     .lane{
         padding: 70px 6.94vw 60px 6.94vw;
         flex-basis: 50%;
+        flex-grow: 1;
         justify-content: space-between;
     }
 

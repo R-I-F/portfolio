@@ -25,7 +25,7 @@ export default function FormEl({title, name, type, value, placeHolder, handleCha
                 name={name}
                 type={type}
                 value={value}
-                placeHolder={placeHolder}
+                placeholder={placeHolder}
                 onChange={(event)=>handleChange(event)}
                 onFocus={()=>{handleFocus()}}
                 onBlur={()=>{handleBlur()}}/>
@@ -45,7 +45,7 @@ export default function FormEl({title, name, type, value, placeHolder, handleCha
                 name={name}
                 type={type}
                 value={value}
-                placeHolder={placeHolder}
+                placeholder={placeHolder}
                 onChange={(event)=>handleChange(event)}
                 onFocus={()=>{handleFocus()}}
                 onBlur={()=>{handleBlur()}}/>

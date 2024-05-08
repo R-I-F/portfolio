@@ -9,7 +9,7 @@ export default function SectionCLane({title, info, activeClassSetter, addClass})
         setIsBtnHovered(x);
         return;
     }
-    console.log(isBtnHovered)
+
     return(
     <div
     className={`lane ${addClass}`}>

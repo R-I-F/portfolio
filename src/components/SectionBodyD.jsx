@@ -54,25 +54,27 @@ export default function SectionBodyD(){
         name = {name}>
             <section
             className="section-body-d-container">
-                <div className="lanes">
+                <div className="lanes-d">
                     <h1 className= 'body-d-title' >Send me a message!</h1>
-                    <p className="lane-info">Got a question or proposal, or just want to say hello? Go ahead.</p>
+                    <p className="lane-info-d">Got a question or proposal, or just want to say hello? Go ahead.</p>
                     <form className="form-container">
-                       <FormEl 
-                        title='Your Name:'
-                        name='name'
-                        type='text'
-                        value={formData.name}
-                        placeHolder='Enter your name'
-                        handleChange={handleChange}/>
+                        <div className="form-info-1">
+                                <FormEl 
+                                title='Your Name:'
+                                name='name'
+                                type='text'
+                                value={formData.name}
+                                placeHolder='Enter your name'
+                                handleChange={handleChange}/>
 
-                        <FormEl 
-                        title='Email Address:'
-                        name='email'
-                        type='text'
-                        value={formData.email}
-                        placeHolder='Enter your email address'
-                        handleChange={handleChange}/>
+                                <FormEl 
+                                title='Email Address:'
+                                name='email'
+                                type='text'
+                                value={formData.email}
+                                placeHolder='Enter your email address'
+                                handleChange={handleChange}/>
+                        </div>
 
                         <FormEl 
                         title='Your Message:'

@@ -2,27 +2,30 @@
     background-color: #f9f9f9;
 }
 
-.lanes{
+.lanes-d{
     margin: 70px 0;
-    padding: 0 60px;
+    padding: 0 15vw;
     display: flex;
     flex-direction: column;
 }
 
 
 .body-d-title{
+    font-family: 'SF UI Text Bold', "Helvetica Neue", "Segoe UI", "Open Sans", sans-serif;
     color: #4831d4;
-    font-size: 28px;
+    font-size: 29px;
+    line-height: 37px;
     font-weight: 700;
-    text-align: center;
+    text-align: left;
     margin-top: 0;
     margin-bottom: 0;
 }
 
-.lane-info{
+.lane-info-d{
+    font-family: 'SF UI Text Regular', "Helvetica Neue", "Segoe UI", "Open Sans", sans-serif;
     font-weight: 400;
     font-size: 14px;
-    line-height: 18px;
+    line-height: 17px;
 }
 .form-container{
     margin-top:40px ;
@@ -31,21 +34,27 @@
 .form-el{
     display: flex;
     flex-direction: column;
+    font-family: 'SF UI Text Regular', "Helvetica Neue", "Segoe UI", "Open Sans", sans-serif;
+    font-weight: 200;
 }
 
 .form-label{
-    font-size: 9px;
+    font-size: 11px;
+    line-height: 12px;
     margin-bottom: 5px;
-    color: #454c42;
+    color: rgba(61, 21, 95, 0.5);
 }
 
 .form-input{
+    font-family: 'SF UI Text Regular', "Helvetica Neue", "Segoe UI", "Open Sans", sans-serif;
+    font-weight: 200;
     height: 35px;
     padding-top: 7.5px;
     padding-bottom: 7.5px;
     margin-bottom: 30px;
     font-size: 11px;
-    color: #454c42;
+    color: rgba(61, 21, 95);
+    background: transparent;
     border: none;
 }
 .form-input:focus{
@@ -61,6 +70,7 @@
 .text-area{
     resize: vertical;
     height: 70px;
+    margin-bottom: 30px;
 }
 
 .special-btn{
@@ -119,47 +129,102 @@
 
 @media only screen and (min-width: 576px){
     .section-body-d-container{
-        height: 500px;
+        width: 100%;
         display: flex;
-        align-items: center;
         justify-content: center;
+        align-items: center;
+    }
+    
+    .lanes-d{
+        height: 344px;
+        width: 100%;
+        margin: 70px 0;
+        padding: 0 11vw;
     }
 
-    .lanes{
-        margin: auto;
-        flex-direction: row;
+    .body-d-title, .lane-info-d{
+        align-self: center;
+        text-align: center;
     }
-
-    .body-d-title{
-        width: 220px;
+    .lane-info-d{
+        width: 280px;
+    }
+    .form-container{
+        align-self: center;
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+    .form-info-1{
+        display: flex;
+        gap: 40px;
+    }
+    .form-el{
+        flex-basis: 0.5;
+        flex-grow: 1;
+    }
+    .form-label{
+        font-size: 9px;
+    }
+    .form-input{
+        font-size: 11px;
+        border-bottom: 1px solid rgba(61, 21, 95, 0.5);
+    }
+    .text-area{
+        height:45px;
+    }
+    .special-btn{
+        align-self: center;
     }
 }
 @media only screen and (min-width: 768px){
     .section-body-d-container{
-        /* padding: 4.56vw 11.07vw auto ; */
         height: 100vh;
     }
-
-    .lanes{
-        width: clamp(766px, 99.74vw, 1760px);
-        height: clamp(282px, 36.72vw, 640px);
-        padding-left: 20px;
-        padding-right: 20px;
-
+    .lanes-d{
+        height: clamp(344.0px, 44.79vw, 588.2px);
+        margin: 21.3px 0 0 0;
+        padding: 0 15.63vw;     /*120px, */
+        max-width: 1780px;
     }
-
-
     .body-d-title{
-        font-size: clamp(24px, 3.13vw, 50px);
-        width: clamp(185px, 24.09vw, 385px);
+        font-size: clamp(25px, 3.26vw, 51px);
+        line-height: clamp(32px, 67px);
+        letter-spacing: -1px;
     }
-
-
-    .lane-info{
-        font-size: clamp(14px, 1.82vw, 29.12px);
-        line-height: clamp(18px, 2.34vw, 37.5px);
+    .lane-info-d{
+        font-size: clamp(12px, 1.56vw, 26px);
+        width: clamp(280px, 36.46vw, 512px);
+        line-height: clamp(17px, 2.21vw, 31px);
+        
     }
     
+    .form-container{
+        margin-top: clamp(40px, 5.21vw, 83.4px);
+        padding-left: 7.42vw;   /*57px, */
+        padding-right: 7.42vw;  /*57px, */
+        max-width: 1127.12px;
+    }
+
+    .form-label{
+        font-size: clamp(8px, 1.04vw, 16px);
+        line-height: clamp(9px, 1.17vw, 18px);
+    }
+    .form-input{
+        height: clamp(23px, 3vw, 50px);
+        padding-top: clamp(5.3px, 0.59vw, 11.04px);
+        padding-bottom: clamp(5.3px, 0.59vw, 11.04px);
+        font-size: clamp(9px, 1.17vw, 18px);
+        line-height: clamp(13px, 1.69vwvw, 28px);
+    }
+
+    .text-area{
+        height: clamp(36.6px, 4.77vw, 75.64px);
+        margin-bottom: clamp(30px, 3.91vw, 62.56px);
+    }
+
     .special-btn{
         width: clamp(180px, 23.44vw, 375px);
         height: clamp(35px, 4.56vw, 73px); 
