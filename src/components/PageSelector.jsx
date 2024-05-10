@@ -35,19 +35,21 @@ export default function PageSelector({selectedPage, setSelectedPage}){
     }, [currentScrollpos]);
     
     function activeClassSetter(zid){
-        if(selectedPage === 3){
+        if(selectedPage === 6){
+            return 'hidden';
+        }
+        else if(selectedPage === 3){
             if(zid === 3){
-                return'square-green'
+                return'square-green';
             }
             else{
-                return 'rhombus-green'
+                return 'rhombus-green';
             }
         }
-
         else if(selectedPage === zid){
-            return 'square'
+            return 'square';
         }
-        else return 'rhombus'
+        else return 'rhombus';
     }
     
     function handleActive(x){

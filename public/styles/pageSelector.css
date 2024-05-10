@@ -27,3 +27,6 @@
     background-color: transparent;
     border: 1px solid #ccf381;
 }
+.hidden{
+    display: none;
+}

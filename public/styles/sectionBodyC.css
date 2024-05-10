@@ -103,12 +103,14 @@
     }
 
     .lanes{
-        margin: auto;
+        margin: auto 0 auto 0;
         flex-direction: row;
+        max-width: 100%;
     }
 
     .lane{
         padding: 70px 6.94vw 60px 6.94vw;
+        /* width: 50vw; */
         flex-basis: 50%;
         flex-grow: 1;
         justify-content: space-between;

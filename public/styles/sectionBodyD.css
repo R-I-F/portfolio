@@ -7,6 +7,7 @@
     padding: 0 15vw;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 
@@ -26,6 +27,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
+    margin-top: 15px;
 }
 .form-container{
     margin-top:40px ;
@@ -68,7 +70,7 @@
 }
 
 .text-area{
-    resize: vertical;
+    resize: none;
     height: 70px;
     margin-bottom: 30px;
 }
@@ -185,7 +187,7 @@
     }
     .lanes-d{
         height: clamp(344.0px, 44.79vw, 588.2px);
-        margin: 21.3px 0 0 0;
+        margin: clamp(21.3px, 2.77vw, 44.8px) 0 0 0;
         padding: 0 15.63vw;     /*120px, */
         max-width: 1780px;
     }
@@ -217,7 +219,7 @@
         padding-top: clamp(5.3px, 0.59vw, 11.04px);
         padding-bottom: clamp(5.3px, 0.59vw, 11.04px);
         font-size: clamp(9px, 1.17vw, 18px);
-        line-height: clamp(13px, 1.69vwvw, 28px);
+        line-height: clamp(13px, 1.69vw, 28px);
     }
 
     .text-area{

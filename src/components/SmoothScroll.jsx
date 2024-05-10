@@ -271,7 +271,18 @@ export default function SmoothScroll({selectedPage, setSelectedPage}){
         }
 
         else if(currentPageSection === 5 ){
-            if(isScrollingUp){
+            if(isScrollingDown){
+                if(selectedPage !== 6 && selectedPage !== 5){
+                    resetScroll();
+                    return;
+                }
+                else{
+                    setSelectedPage(6);
+                    resetScroll();
+                    return;
+                }
+            }
+            else if(isScrollingUp){
                 if(selectedPage !== 4 && selectedPage !== 5){
                     resetScroll();
                     return;
@@ -284,6 +295,25 @@ export default function SmoothScroll({selectedPage, setSelectedPage}){
             }
             else{
                 setSelectedPage(5);
+                resetScroll();
+                return;
+            }
+        }
+
+        else if(currentPageSection === 6 ){
+            if(isScrollingUp){
+                if(selectedPage !== 5 && selectedPage !== 6){
+                    resetScroll();
+                    return;
+                }
+                else{
+                    setSelectedPage(5);
+                    resetScroll();
+                    return;
+                }
+            }
+            else{
+                setSelectedPage(6);
                 resetScroll();
                 return;
             }
@@ -315,6 +345,9 @@ export default function SmoothScroll({selectedPage, setSelectedPage}){
         }
         else if( selectedPage === 5 ){
             scroller.scrollTo('section5', options)
+        }
+        else if( selectedPage === 6 ){
+            scroller.scrollTo('section6', options)
         }
     }
 

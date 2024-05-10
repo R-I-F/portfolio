@@ -28,23 +28,18 @@
 
 .green{
     background-color: #ccf381;
+    border-top: 1.5px solid #ccf381;
 }
 
 .blue{
     background-color: #4831d4;
-}
-
-.cross .stripe1{
-    transform: rotate(45deg);
-}
-.cross .stripe2{
-    width: 100%;
-    transform: rotate(-45deg) translate(10px, -6px);
+    border-top: 1.5px solid #4831d4;
 }
 
 .stripe1, .stripe2{
+    display: block;
     width: 100%;
-    height: 2px;
+    height: 3px;
     transition: 0.2s ease;
 }
 
@@ -52,6 +47,20 @@
     width: 70%;
     margin-left: auto;
 }
+.cross .stripe1{
+    transform: translateY(6px) rotate(45deg) ;
+    transform-origin: center center;
+}
+
+.cross .stripe2{
+    width: 100%;
+    transform: translateY(-6px) rotate(-45deg) ;
+    transform-origin: center center;
+}
+.stripe2.rotate{
+
+}
+
 
 @media only screen and (min-width: 576px){
     .menu-button-container{
@@ -72,16 +81,19 @@
 
     .stripe1, .stripe2{
         width: 100%;
-        height: 2.0px;
+        height: 3px;
     }
 
     .stripe2{
         width: 70%;
+        height: 3px;
     }
 
+    .cross .stripe1{
+        transform: rotate(45deg) translate(0px, 7px);
+    }
     .cross .stripe2{
-        width: 100%;
-        transform: rotate(-45deg) translate(6px, -6px);
+        transform: rotate(-45deg) translate(0px, -7px);
     }
 
     .menu-button-container{
@@ -94,19 +106,19 @@
 
 @media only screen and (min-width: 992px){
     .cross .stripe1{
-        transform: rotate(45deg) translate(0px, 6px);
+        transform: rotate(45deg) translate(0px, 9px);
     }
     .cross .stripe2{
-        transform: rotate(-45deg) translate(4px, -6px);
+        transform: rotate(-45deg) translate(0px, -9px);
     }
 }
 
 @media only screen and (min-width: 1200px){
     .cross .stripe1{
         width: 109%;
-        transform: rotate(45deg) translate(0px, 6px);
+        transform: rotate(45deg) translate(0px, 10.5px);
     }
     .cross .stripe2{
-        transform: rotate(-45deg) translate(4px, -6px);
+        transform: rotate(-45deg) translate(0px, -10.5px);
     }
 }

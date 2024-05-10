@@ -4,7 +4,7 @@ import '../../public/styles/menuButton.css'
 export default function MenuButton({clicked, setIsClicked, selectedPage, isMobileScreen}){
 
     function stripeColorClass(){
-        if(selectedPage === 3 || isMobileScreen){
+        if(selectedPage === 3 || selectedPage === 6 || isMobileScreen){
             if(clicked){
                 return ('blue');
             }

@@ -7,6 +7,7 @@ import SmoothScroll from "../components/SmoothScroll";
 import SectionBodyB from "../components/SectionBodyB";
 import SectionBodyC from "../components/SectionBodyC";
 import SectionBodyD from "../components/SectionBodyD";
+import SectionFooter from "../components/SectionFooter";
 
 export default function PortfolioPage({selectedPage, setSelectedPage}){
     
@@ -56,6 +57,8 @@ export default function PortfolioPage({selectedPage, setSelectedPage}){
             name = 'section4'/>
             <SectionBodyD 
             name = 'section5'/>
+            <SectionFooter
+            name = 'section6'/>
             <div className="pageSelector-container">
                 <PageSelector 
                 selectedPage = {selectedPage}
