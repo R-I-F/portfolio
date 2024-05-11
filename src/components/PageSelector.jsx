@@ -3,7 +3,7 @@ import '../../public/styles/pageSelector.css'
 import { Link, Events, animateScroll as scroll, scrollSpy } from 'react-scroll'
 
 
-export default function PageSelector({selectedPage, setSelectedPage}){
+export default function PageSelector({homepageSection, setHomepageSection}){
     const [currentScrollpos, setCurrentScrollPos] = React.useState();
 
     React.useEffect(() => {
@@ -35,10 +35,10 @@ export default function PageSelector({selectedPage, setSelectedPage}){
     }, [currentScrollpos]);
     
     function activeClassSetter(zid){
-        if(selectedPage === 6){
+        if(homepageSection === 6){
             return 'hidden';
         }
-        else if(selectedPage === 3){
+        else if(homepageSection === 3){
             if(zid === 3){
                 return'square-green';
             }
@@ -46,16 +46,16 @@ export default function PageSelector({selectedPage, setSelectedPage}){
                 return 'rhombus-green';
             }
         }
-        else if(selectedPage === zid){
+        else if(homepageSection === zid){
             return 'square';
         }
         else return 'rhombus';
     }
     
     function handleActive(x){
-        setSelectedPage(x);
+        setHomepageSection(x);
     }
-    // console.log(`selected page is \t ${selectedPage}`)
+    // console.log(`selected page is \t ${homepageSection}`)
 
     return(
         <div className='pageSelector'>

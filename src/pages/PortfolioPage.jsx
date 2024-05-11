@@ -1,5 +1,4 @@
 import React from "react";
-import { fireBaseContext } from "../context/fireBaseProvider";
 import SectionHeader from "../components/SectionHeader";
 import PageSelector from "../components/PageSelector";
 import SectionBodyA from "../components/SectionBodyA";
@@ -9,20 +8,9 @@ import SectionBodyC from "../components/SectionBodyC";
 import SectionBodyD from "../components/SectionBodyD";
 import SectionFooter from "../components/SectionFooter";
 
-export default function PortfolioPage({selectedPage, setSelectedPage}){
+export default function PortfolioPage({homepageSection, setHomepageSection}){
     
-    const getAllDocsInDb = React.useContext(fireBaseContext).getAllDocsInDb
     const [isBigScreen, setIsBigScreen] = React.useState(false);
-    const [projectsArr, setProjectsArr] = React.useState();
-
-    React.useEffect(()=>{
-        getAllDocsInDb()
-        .then((data)=>{
-                setProjectsArr(data)
-            }
-        )
-        
-    },[])
 
     React.useEffect(()=>{
         const handleResize = () => {
@@ -44,8 +32,8 @@ export default function PortfolioPage({selectedPage, setSelectedPage}){
             {
                 isBigScreen &&
                 <SmoothScroll 
-                selectedPage = {selectedPage}
-                setSelectedPage = {setSelectedPage}/>
+                homepageSection = {homepageSection}
+                setHomepageSection = {setHomepageSection}/>
             }
             <SectionHeader 
             name = 'section1'/>
@@ -61,8 +49,8 @@ export default function PortfolioPage({selectedPage, setSelectedPage}){
             name = 'section6'/>
             <div className="pageSelector-container">
                 <PageSelector 
-                selectedPage = {selectedPage}
-                setSelectedPage = {setSelectedPage}/>
+                homepageSection = {homepageSection}
+                setHomepageSection = {setHomepageSection}/>
             </div>
         </div>
 

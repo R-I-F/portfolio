@@ -3,8 +3,7 @@ import MenuButton from './MenuButton'
 import MenuBar from './MenuBar'
 import { Outlet } from 'react-router-dom'
 
-export default function Navigation({selectedPage}){
-    const [clicked, setIsClicked] = React.useState(false)
+export default function Navigation({homepageSection, clicked, setIsClicked}){
     const [ isMobileScreen, setIsMobileScreen ] = React.useState(false);
     React.useEffect(()=>{
         function stateSetter(){
@@ -39,7 +38,7 @@ export default function Navigation({selectedPage}){
             <MenuButton 
             clicked = { clicked }
             setIsClicked = { setIsClicked }
-            selectedPage = { selectedPage }
+            homepageSection = { homepageSection }
             isMobileScreen = {isMobileScreen}/>
         </div>
 

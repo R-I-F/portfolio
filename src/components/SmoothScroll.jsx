@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Button, Element, scroller, Events, animateScroll as scroll, scrollSpy } from 'react-scroll';
 import ScrollDirectionDetector from './ScrollDirectionDetector';
 
-export default function SmoothScroll({selectedPage, setSelectedPage}){
+export default function SmoothScroll({homepageSection, setHomepageSection}){
     let viewportHeight = window.innerHeight;
     const [currentPageSection, setCurrentPageSection] = React.useState(1);
     const [currentScrollpos, setCurrentScrollPos] = React.useState(0);
@@ -14,7 +14,7 @@ export default function SmoothScroll({selectedPage, setSelectedPage}){
     /* 
     4th                            scrollToNextSection()
     
-    3rd                            setSelectedPage instant
+    3rd                            setHomepageSection instant
     
     2nd    currentPageSection 20ms  isScrollingup (65ms)      isScrollingDown (65ms) 
     
@@ -119,10 +119,10 @@ export default function SmoothScroll({selectedPage, setSelectedPage}){
         /* 
         4th
         this use effect invokes the scroll to next section function
-        whenever the selectedPage Changes
-        the function checks the selectedPage and then scrolls to the adjacent position
+        whenever the homepageSection Changes
+        the function checks the homepageSection and then scrolls to the adjacent position
         */
-    },[selectedPage])
+    },[homepageSection])
 
     React.useEffect(() => {
 
@@ -164,23 +164,23 @@ export default function SmoothScroll({selectedPage, setSelectedPage}){
    function calcPageSection(){
         if(currentPageSection === 1){
             if(isScrollingDown){
-                    if(selectedPage !== 2 && selectedPage !== 1){
+                    if(homepageSection !== 2 && homepageSection !== 1){
                         resetScroll();
                         return;
                     }
                     else{
-                        setSelectedPage(2);
+                        setHomepageSection(2);
                         resetScroll();
                         return;
                     }
                 }            
             else if(isScrollingUp) {
-                setSelectedPage(1);
+                setHomepageSection(1);
                 resetScroll();
                 return;
             }
             else {
-                setSelectedPage(1);
+                setHomepageSection(1);
                 return;
             }
         }
@@ -188,83 +188,81 @@ export default function SmoothScroll({selectedPage, setSelectedPage}){
         else if(currentPageSection === 2){
             if(isScrollingDown){
                     // console.log('here is the bug')
-                    if(selectedPage !== 3 && selectedPage !== 2){
+                    if(homepageSection !== 3 && homepageSection !== 2){
                         resetScroll();
                         return;
                     }
                     else{
-                        console.log(`\tisScrollingDown ? ${isScrollingDown}`)
-                        console.log(`shouldExecute ? ${shouldExecute}`)
-                        setSelectedPage(3);
+                        setHomepageSection(3);
                         resetScroll();
                         return;
                     }
             }
             else if(isScrollingUp){
-                setSelectedPage(1);
+                setHomepageSection(1);
                 resetScroll();
                 return;
             }
             else {
-                setSelectedPage(2);
+                setHomepageSection(2);
                 return;
             }
         }
 
         else if(currentPageSection === 3){
             if(isScrollingDown){
-                if(selectedPage !== 4 && selectedPage !== 3){
+                if(homepageSection !== 4 && homepageSection !== 3){
                     resetScroll();
                     return;
                 }
                 else{
-                    setSelectedPage(4);
+                    setHomepageSection(4);
                     resetScroll();
                     return;
                 }
             }
             else if(isScrollingUp){
-                if(selectedPage !== 2 && selectedPage !== 3){
+                if(homepageSection !== 2 && homepageSection !== 3){
                     resetScroll();
                     return;
                 }
                 else{
-                    setSelectedPage(2);
+                    setHomepageSection(2);
                     resetScroll();
                     return;
                 }
             }
             else {
-                setSelectedPage(3);
+                setHomepageSection(3);
                 return;
             }
         }
 
         else if(currentPageSection === 4){
             if(isScrollingDown){
-                if(selectedPage !== 5 && selectedPage !== 4){
+                if(homepageSection !== 5 && homepageSection !== 4){
                     resetScroll();
                     return;
                 }
                 else{
-                    setSelectedPage(5);
+                    setHomepageSection(5);
                     resetScroll();
                     return;
                 }
             }
             else if(isScrollingUp){
-                if(selectedPage !== 3 && selectedPage !== 4){
+                if(homepageSection !== 3 && homepageSection !== 4){
                     resetScroll();
                     return;
                 }
                 else{
-                    setSelectedPage(3);
+                    setHomepageSection(3);
                     resetScroll();
                     return;
                 }
             }
             else {
-                setSelectedPage(4);
+                setHomepageSection(4);
                 resetScroll();
                 return 4;
             }
@@ -272,29 +270,29 @@ export default function SmoothScroll({selectedPage, setSelectedPage}){
 
         else if(currentPageSection === 5 ){
             if(isScrollingDown){
-                if(selectedPage !== 6 && selectedPage !== 5){
+                if(homepageSection !== 6 && homepageSection !== 5){
                     resetScroll();
                     return;
                 }
                 else{
-                    setSelectedPage(6);
+                    setHomepageSection(6);
                     resetScroll();
                     return;
                 }
             }
             else if(isScrollingUp){
-                if(selectedPage !== 4 && selectedPage !== 5){
+                if(homepageSection !== 4 && homepageSection !== 5){
                     resetScroll();
                     return;
                 }
                 else{
-                    setSelectedPage(4);
+                    setHomepageSection(4);
                     resetScroll();
                     return;
                 }
             }
             else{
-                setSelectedPage(5);
+                setHomepageSection(5);
                 resetScroll();
                 return;
             }
@@ -302,18 +300,18 @@ export default function SmoothScroll({selectedPage, setSelectedPage}){
 
         else if(currentPageSection === 6 ){
             if(isScrollingUp){
-                if(selectedPage !== 5 && selectedPage !== 6){
+                if(homepageSection !== 5 && homepageSection !== 6){
                     resetScroll();
                     return;
                 }
                 else{
-                    setSelectedPage(5);
+                    setHomepageSection(5);
                     resetScroll();
                     return;
                 }
             }
             else{
-                setSelectedPage(6);
+                setHomepageSection(6);
                 resetScroll();
                 return;
             }
@@ -321,7 +319,7 @@ export default function SmoothScroll({selectedPage, setSelectedPage}){
 
         else {
             console.log('\t\t\t\tcondition proximus')
-            setSelectedPage(1);
+            setHomepageSection(1);
             return 1;
         }
     }
@@ -331,22 +329,22 @@ export default function SmoothScroll({selectedPage, setSelectedPage}){
             duration: 300,
             smooth: true,
         }
-        if( selectedPage === 1 ){
+        if( homepageSection === 1 ){
             scroller.scrollTo('section1', options)
         }
-        else if( selectedPage === 2 ){
+        else if( homepageSection === 2 ){
             scroller.scrollTo('section2', options)
         }
-        else if( selectedPage === 3 ){
+        else if( homepageSection === 3 ){
             scroller.scrollTo('section3', options)
         }
-        else if( selectedPage === 4 ){
+        else if( homepageSection === 4 ){
             scroller.scrollTo('section4', options)
         }
-        else if( selectedPage === 5 ){
+        else if( homepageSection === 5 ){
             scroller.scrollTo('section5', options)
         }
-        else if( selectedPage === 6 ){
+        else if( homepageSection === 6 ){
             scroller.scrollTo('section6', options)
         }
     }
@@ -358,7 +356,7 @@ export default function SmoothScroll({selectedPage, setSelectedPage}){
     // console.log(`isScrollingUp ? ${isScrollingUp}`);
     // console.log(`isScrollingDown ? ${isScrollingDown}`)
     // console.log(`shouldExecute ? ${shouldExecute}`)
-    // console.log(`selected page is \t ${selectedPage}`)
+    // console.log(`selected page is \t ${homepageSection}`)
     // console.log(`is it Ipad vertical Screen ? ${isIpadScreen}`);
     return(<>
         <ScrollDirectionDetector 

@@ -1,16 +1,21 @@
 import React from 'react'
 import '../../public/styles/menuButton.css'
+import { useLocation } from 'react-router-dom';
 
-export default function MenuButton({clicked, setIsClicked, selectedPage, isMobileScreen}){
+export default function MenuButton({clicked, setIsClicked, homepageSection, isMobileScreen}){
+    const location = useLocation();
 
     function stripeColorClass(){
-        if(selectedPage === 3 || selectedPage === 6 || isMobileScreen){
-            if(clicked){
-                return ('blue');
+        if(location.pathname === '/'){
+            if(homepageSection === 3 || homepageSection === 6 || isMobileScreen){
+                if(clicked){
+                    return ('blue');
+                }
+                else{
+                    return 'green'
+                }
             }
-            else{
-                return 'green'
-            }
+            else return ('blue')
         }
         else return ('blue')
     }

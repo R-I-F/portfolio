@@ -10,14 +10,14 @@ function ScrollDirectionDetector({setIsScrollingUp, setIsScrollingDown, currentS
             let scrollTop = window.scrollY;
 
             if ((scrollTop - lastScrollTop)> 30){
-                console.log('\tscrolling down')
+                // console.log('\tscrolling down')
                 setIsScrollingUp(false);
                 setIsScrollingDown(true);
                 setShouldExecute(false);
             } 
             
             else if ((scrollTop - lastScrollTop) < -30 ) {
-                console.log('\tscrolling up')
+                // console.log('\tscrolling up')
                 setIsScrollingUp(true);
                 setIsScrollingDown(false);
                 setShouldExecute(false);

@@ -1,0 +1,39 @@
+.projects-page{
+    background-color: #f5f4fc;
+    height: 100%;
+}
+.projects-header-lane{
+    margin: 79.80px 0 70px;
+
+}
+.blue-color{
+    color: #4831d4;
+}
+.projects-header-title, .projects-header-info{
+    font-family: 'SF UI Text Regular', "Helvetica Neue", "Segoe UI", "Open Sans", sans-serif;
+    color: rgb(71, 71, 71);
+}
+
+.projects-header-title{
+    display: none;
+    font-size: 32px;
+    line-height: 37px;
+    font-weight: 700;
+    margin: 0;
+}
+.projects-header-title span{
+    color: rgba(123,123,125,255);
+}
+.projects-header-info{
+    display: flex;
+    justify-content: center;
+    font-size: 17px;
+    line-height: 29px;
+    margin: 18px 0 22.5px;
+}
+@media only screen and (min-width: 650px){
+    .projects-header-title{
+        display: flex;
+        justify-content: center;
+    }
+}
