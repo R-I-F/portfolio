@@ -1,5 +1,4 @@
 import React from "react";
-import '../../public/styles/projectsPage.css'
 
 export default function ProjectsHeader(){
     return (

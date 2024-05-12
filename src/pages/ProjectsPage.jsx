@@ -1,6 +1,7 @@
 import React from "react";
 import ProjectsHeader from "../components/ProjectsHeader";
 import ProjectsBody from "../components/ProjectsBody";
+import '../../public/styles/projectsPage.css'
 
 export default function ProjectsPage({clicked, setIsClicked}){
     React.useEffect(()=>{
