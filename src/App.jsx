@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import PortfolioPage from './pages/PortfolioPage';
 import ProjectsPage from './pages/ProjectsPage';
+import SingleProjectPage from './pages/SingleProjectPage';
 import Navigation from './components/Navigation';
 
 export default function App(){
@@ -28,6 +29,9 @@ export default function App(){
                       <ProjectsPage 
                       clicked = {clicked}
                       setIsClicked = {setIsClicked}/>
+                    }/>
+                    <Route path='/projects/:id' element = {
+                      <SingleProjectPage />
                     }/>
                 </Route>
             </Routes>

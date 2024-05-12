@@ -109,8 +109,7 @@
     align-items: center;
 }
 
-.gh{
-    margin-left: auto;
+.gh, .project-url{
     font-size: 17px;
     line-height: 29px;
     font-family: 'SF UI Text Regular', "Helvetica Neue", "Segoe UI", "Open Sans", sans-serif;
@@ -118,6 +117,10 @@
     font-size: 17px;
     line-height: 29px;
     text-decoration: none;
+}
+.gh{
+    margin-left: auto;
+
 }
 @media only screen and (min-width: 650px){
     .projects-header-title{
@@ -136,6 +139,6 @@
 }
 @media only screen and (min-width: 938px){
     .project-container{
-        flex-basis: 32%;
+        flex-basis: 31%;
     }
 }

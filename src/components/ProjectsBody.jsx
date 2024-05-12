@@ -1,12 +1,30 @@
 import React from "react";
 import { fireBaseContext } from "../context/fireBaseProvider";
 import { IoIosStar, IoIosStarOutline  } from "react-icons/io";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 export default function ProjectsBody(){
     const getAllDocsInDb = React.useContext(fireBaseContext).getAllDocsInDb
     const [projectsArr, setProjectsArr] = React.useState();
+    const navigate = useNavigate();
+
+    React.useEffect(()=>{
+        getAllDocsInDb()
+        .then((data)=>{
+                const sortedArr = data.sort((a, b)=>{
+                    const levelA = a.level;
+                    const levelB = b.level;
+                    return levelB - levelA;
+                })
+                setProjectsArr(sortedArr)
+            }
+        )
+    },[])
+
+    function handleNavigation(id, options){
+        navigate(`/projects/${id}`, options)
+    }
 
     function levelEl(level){
         let j = level
@@ -63,18 +81,6 @@ export default function ProjectsBody(){
         })
     }
 
-    React.useEffect(()=>{
-        getAllDocsInDb()
-        .then((data)=>{
-                const sortedArr = data.sort((a, b)=>{
-                    const levelA = a.level;
-                    const levelB = b.level;
-                    return levelB - levelA;
-                })
-                setProjectsArr(sortedArr)
-            }
-        )
-    },[])
 
     function projectsArrEl(){
         if(projectsArr){
@@ -82,10 +88,10 @@ export default function ProjectsBody(){
             return(
                 projectsArr.map((project, index)=>{
                     return(
-                    <a
-                    key={`project${index}`}
-                    className="project-container"
-                    href={project.url}>
+                    <div
+                    key = { `project${index}` }
+                    className = "project-container"
+                    onClick = { ()=>handleNavigation(project.id, {state: {...project}}) }>
                         <div className="date-level">
                             <p className="project-date">{formatDate(project.date)}</p>
                             <div className="project-level">{levelEl(parseInt(project.level))}</div>
@@ -95,10 +101,13 @@ export default function ProjectsBody(){
                         className="tech-container">{formatTech(project.tech)}</div>
                         <div className="url-gh">
                             <a 
+                            className="project-url"
+                            href={`${project.url}`}>Visit Webpage</a>
+                            <a 
                             className="gh"
-                            href={`${project.git}`}>GH</a>
+                            href={`${project.git}`}>GitHub</a>
                         </div>
-                    </a>
+                    </div>
                     )
                 })
             )
