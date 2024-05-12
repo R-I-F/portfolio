@@ -102,10 +102,12 @@ export default function ProjectsBody(){
                         <div className="url-gh">
                             <a 
                             className="project-url"
-                            href={`${project.url}`}>Visit Webpage</a>
+                            href={`${project.url}`}
+                            onClick={(e) => e.stopPropagation()}>Visit Webpage</a>
                             <a 
                             className="gh"
-                            href={`${project.git}`}>GitHub</a>
+                            href={`${project.git}`}
+                            onClick={(e) => e.stopPropagation()}>GitHub</a>
                         </div>
                     </div>
                     )
