@@ -19,7 +19,10 @@ export default function SectionFooter({name}){
                         </div>
                         <div className='footer-info-container-2'>
                             <Link className= {linkClass}>Home</Link>
-                            <Link className= {linkClass}>My Work</Link>
+                            <Link 
+                            to = "/projects"
+                            className= {linkClass}
+                            >My Work</Link>
                             <Link className= {linkClass}>My Resume</Link>
                         </div>
                         <div className='footer-info-container-3'></div>

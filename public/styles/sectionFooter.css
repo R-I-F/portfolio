@@ -44,6 +44,7 @@ p{
     color: rgb(186, 221, 118);
     font-size: 16px;
     line-height: 39px;
+    text-decoration: none;
 }
 .footer-bottom{
     display: flex;

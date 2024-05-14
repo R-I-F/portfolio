@@ -34,6 +34,15 @@ export default function SingleProjectPage(){
         if(viewportWidth < 787){
             vWidth = viewportWidth - (0.178*viewportWidth)
         }
+        else if(viewportWidth >= 1200 && viewportWidth < 1300){
+            vWidth = viewportWidth - 260;
+        }
+        else if(viewportWidth >= 1300 && viewportWidth < 1400){
+            vWidth = viewportWidth - 360;
+        }
+        else if(viewportWidth >= 1400){
+            vWidth = viewportWidth - 460;
+        }
         else{
             vWidth = viewportWidth - 140
         }
@@ -53,15 +62,14 @@ export default function SingleProjectPage(){
                 elArr.push(
                     <div
                     key={`info-part${i}`}>
-                        <h3>{projectData.infoTitles[i]}</h3>
+                        <h3 className="single-project-title">{projectData.infoTitles[i]}</h3>
+                        <p className="single-project-info"
+                        >{projectData.info[i]}</p>
                         <YouTube 
                         videoId = {`${projectData.media[i]}`}
                         opts={{ height: calculateVideoHeight(), width: "100%" }}
                         style={customStyle}
                         className="youtube-video"/>
-        
-                        <p className="single-project-info"
-                        >{projectData.info[i]}</p>
                     </div>
                 )
             }

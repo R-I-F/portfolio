@@ -1,13 +1,21 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
 export default function SectionCLane({title, info, activeClassSetter, addClass}){
     const [ isBtnClicked, setIsBtnClicked ] = React.useState(false)
     const [ isBtnHovered, setIsBtnHovered ] = React.useState(false)
+    const navigate = useNavigate();
     function handleHover(x){
         console.log('hovered');
         setIsBtnHovered(x);
         return;
+    }
+
+    function handleBtnClick(x){
+        setIsBtnClicked(true);
+        setTimeout(()=>{
+            navigate(x)}, 1500)
     }
 
     return(
@@ -17,7 +25,7 @@ export default function SectionCLane({title, info, activeClassSetter, addClass})
         <p className = 'lane-info'>{info}</p>
         <button 
         className = {`special-btn`}
-        onClick={()=>setIsBtnClicked(prev=>!prev)}
+        onClick={()=>handleBtnClick("/projects")}
         onMouseEnter={()=>handleHover(true)}
         onMouseLeave={()=>handleHover(false)}>
             <div className = {`${activeClassSetter(isBtnClicked, isBtnHovered)}`}/>

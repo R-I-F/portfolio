@@ -30,17 +30,42 @@
     color: rgb(71, 71, 71);
     font-size: 17px;
     line-height: 29px;
+    max-width: 1400px;
+    margin: 0 auto;
 }
+
+.single-project-title{
+    font-family: 'SF UI Text Bold', "Helvetica Neue", "Segoe UI", "Open Sans", sans-serif;
+    margin-top: 40px;
+    margin-bottom: 0;
+}   
+
 .single-project-info{
     margin-top: 17px;
     margin-bottom: 21.25px;
 }
 
-/* @media only screen and (min-width: 650px){
+@media only screen and (min-width: 650px){
 }
 @media only screen and (min-width: 658px){
 
 }
 @media only screen and (min-width: 938px){
 
-} */
+}
+
+@media only screen and (min-width: 1200px){
+    .single-product-body{
+        padding: 0 130px;
+    }
+}
+@media only screen and (min-width: 1300px){
+    .single-product-body{
+        padding: 0 180px;
+    }
+}
+@media only screen and (min-width: 1400px){
+    .single-product-body{
+        padding: 0 230px;
+    }
+}
