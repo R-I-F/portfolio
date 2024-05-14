@@ -28,15 +28,46 @@ export default function MenuBar({clicked, setIsClicked}){
             <p className={`${clicked ? "open" : ''}`}>SAY HELLO</p>
 
             <div className = {`info-2 ${clicked ? "open" : ''}`}>
-                <Link className= {linkClass}>Mail-Link</Link>
-                <Link className= {linkClass}>Telegram</Link>
+
+                <a 
+                href='mailto:ibrahimrefaeei@gmail.com'
+                className= {linkClass}
+                >ibrahimrefaeei@gmail.com</a>
+
+                <a 
+                href='https://t.me/RifDev'
+                target="_blank"
+                className= {linkClass}
+                >Telegram</a>
+
             </div>
 
             <div className= {`social-media-links ${clicked ? "open" : ''}`}>
-                <Link className= {linkClass}>FB</Link>
-                <Link className= {linkClass}>GH</Link>
-                <Link className={linkClass}>LN</Link>
-                <Link className={linkClass}>YT</Link>
+              
+                <a 
+                href='https://www.facebook.com/ibrahim.e.refaee'
+                target="_blank"
+                className= {linkClass}
+                >FB</a>
+              
+                <a 
+                href='https://github.com/R-I-F'
+                target="_blank"
+                className= {linkClass}
+                >GH</a>
+                
+                <a
+                href='https://www.linkedin.com/in/ibrahim-el-refaee-570096126/'
+                target="_blank"
+                className={linkClass}>
+                  LN</a>
+                
+                <a
+                href='https://www.youtube.com/channel/UC8Z4q6HnxuxRNGbP8yHl6FQ'
+                target="_blank"
+                className={linkClass}>
+                  YT</a>
+
             </div>
 
           </div>
