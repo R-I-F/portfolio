@@ -1,5 +1,5 @@
 import React from "react"
-import { useLocation } from "react-router-dom"
+import { useLocation, Link } from "react-router-dom"
 import YouTube from "react-youtube"
 import '../../public/styles/singleProjectPage.css'
 import SingleProjectHeader from "../components/SingleProjectHeader"
@@ -76,6 +76,28 @@ export default function SingleProjectPage(){
         }
         return elArr;
     }
+
+    function renderProjectBody(){
+        if(projectData.presentation.isReady){
+            if(projectData.presentation.isVideo){
+                return(
+                    <>
+                        <p className="single-project-info"
+                        >{projectData.intro}</p>
+                        {renderMedia()}
+                    </>
+                )
+            }
+        }
+        else return(
+            <>
+                <p className="single-project-info"
+                    >Apologies for any inconvenience. The project presentation is not currently ready. You're welcome to visit the website or GitHub repository to review progress.</p>
+            </>
+        )
+        /* this function checks the presentation if its ready , if it is ready then it returns the presentation code elements */
+    }
+
     function render(){
         if(projectData){
             return(
@@ -84,11 +106,21 @@ export default function SingleProjectPage(){
                     title={projectData.name} />
         
                     <div className="single-product-body">
-        
-                        <p className="single-project-info"
-                        >{projectData.intro}</p>
-
-                        {renderMedia()}
+                        
+                        <div className="single-project-page-links">
+                            <a
+                            href={projectData.url}
+                            target="_blank"
+                            className="single-project-page-link"
+                            >Visit Website</a>
+                            <a
+                            href={projectData.git}
+                            target="_blank"
+                            className="single-project-page-link"
+                            >GitHub</a>
+                        </div>
+                        
+                        {renderProjectBody()}
                         
                     </div>
                 </div>

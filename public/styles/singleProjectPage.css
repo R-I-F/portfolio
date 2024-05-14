@@ -4,6 +4,9 @@
 }
 .single-project-header-lane{
     margin: 79.80px 0 70px;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
 
 }
 .blue-color{
@@ -19,6 +22,18 @@
     line-height: 37px;
     font-weight: 700;
     margin: 0;
+}
+.single-project-page-links{
+    display: flex;
+    justify-content: space-between;
+}
+.single-project-page-link{
+        display: block;
+        cursor: pointer;
+        color: #4831d4;
+        text-decoration: none;
+        font-family: 'Inter';
+        font-size: 20px;
 }
 
 .single-project-header-title span{
