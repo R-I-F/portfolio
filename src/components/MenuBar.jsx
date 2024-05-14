@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../public/styles/menuBar.css'
 
-export default function MenuBar({clicked}){
+export default function MenuBar({clicked, setIsClicked}){
     const linkClass = `link ${clicked ? 'open' : ''}`
     const renderMenuBar = () => {
         return (
@@ -11,7 +11,13 @@ export default function MenuBar({clicked}){
             <h2 className='menu-bar-name'>Ibrahim</h2>
 
             <div className={`info-1 ${clicked ? "open" : ''}`}>
-                <Link className= {linkClass}>Home</Link>
+
+                <Link 
+                to = "/"
+                className = {linkClass}
+                onClick = {()=>{setIsClicked(false);}}
+                >Home</Link>
+
                 <Link 
                 to='/projects'
                 className= {linkClass}

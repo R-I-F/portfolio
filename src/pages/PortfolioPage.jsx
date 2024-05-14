@@ -13,6 +13,11 @@ export default function PortfolioPage({homepageSection, setHomepageSection}){
     const [isBigScreen, setIsBigScreen] = React.useState(false);
 
     React.useEffect(()=>{
+        setHomepageSection(1);
+        // secondary precaution sets the page section to 1 on component render
+    },[])
+
+    React.useEffect(()=>{
         const handleResize = () => {
             setIsBigScreen(window.innerWidth >= 768);
         };

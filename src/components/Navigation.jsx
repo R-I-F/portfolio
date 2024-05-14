@@ -1,10 +1,20 @@
 import React from 'react'
 import MenuButton from './MenuButton'
 import MenuBar from './MenuBar'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 
-export default function Navigation({homepageSection, clicked, setIsClicked}){
+export default function Navigation({homepageSection}){
     const [ isMobileScreen, setIsMobileScreen ] = React.useState(false);
+    const [clicked, setIsClicked] = React.useState(false);
+    
+    const location = useLocation();
+
+    React.useEffect(()=>{
+        setIsClicked(false)
+        // secondary precaution: closes the menubar on route change 
+        // if not closed when link is clicked
+    },[location.pathname])
+
     React.useEffect(()=>{
         function stateSetter(){
             if(window.innerWidth < 576){
@@ -43,7 +53,8 @@ export default function Navigation({homepageSection, clicked, setIsClicked}){
         </div>
 
         <MenuBar
-        clicked = { clicked }/>
+        clicked = { clicked }
+        setIsClicked = {setIsClicked}/>
         
         <Outlet />
     </div>

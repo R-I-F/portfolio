@@ -8,17 +8,14 @@ import Navigation from './components/Navigation';
 
 export default function App(){
   const [homepageSection, setHomepageSection] = React.useState(1);
-  const [clicked, setIsClicked] = React.useState(false);
-
+  
     return(
       <>
         <BrowserRouter>
             <Routes>
                 <Route element = {
                   <Navigation
-                  homepageSection = {homepageSection}
-                  clicked = {clicked}
-                  setIsClicked = {setIsClicked}/>
+                  homepageSection = {homepageSection}/>
                 }>
                     <Route path='/' element = {
                       <PortfolioPage
@@ -26,9 +23,7 @@ export default function App(){
                       setHomepageSection = {setHomepageSection}/>
                     }/>
                     <Route path='/projects' element = {
-                      <ProjectsPage 
-                      clicked = {clicked}
-                      setIsClicked = {setIsClicked}/>
+                      <ProjectsPage />
                     }/>
                     <Route path='/projects/:id' element = {
                       <SingleProjectPage />
