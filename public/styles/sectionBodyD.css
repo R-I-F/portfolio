@@ -30,10 +30,13 @@
     margin-top: 15px;
 }
 .form-container{
-    margin-top:40px ;
+    margin-top: 40px ;
+    position: relative;
+    z-index: 1;
 }
 
 .form-el{
+    position: relative;
     display: flex;
     flex-direction: column;
     font-family: 'SF UI Text Regular', "Helvetica Neue", "Segoe UI", "Open Sans", sans-serif;
@@ -45,6 +48,7 @@
     line-height: 12px;
     margin-bottom: 5px;
     color: rgba(61, 21, 95, 0.5);
+    z-index: 1;
 }
 
 .form-input{
