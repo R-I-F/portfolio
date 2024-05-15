@@ -7,7 +7,6 @@ export default function SectionCLane({title, info, activeClassSetter, addClass})
     const [ isBtnHovered, setIsBtnHovered ] = React.useState(false)
     const navigate = useNavigate();
     function handleHover(x){
-        console.log('hovered');
         setIsBtnHovered(x);
         return;
     }
@@ -15,7 +14,7 @@ export default function SectionCLane({title, info, activeClassSetter, addClass})
     function handleBtnClick(x){
         setIsBtnClicked(true);
         setTimeout(()=>{
-            navigate(x)}, 1500)
+            navigate(x)}, 1000)
     }
 
     return(

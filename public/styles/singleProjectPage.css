@@ -1,6 +1,11 @@
+
 .single-project-page{
     background-color: #f5f4fc;
     height: 100%;
+}
+
+.header-body{
+    min-height: 100vh;
 }
 .single-project-header-lane{
     margin: 79.80px 0 70px;
@@ -55,9 +60,11 @@
     margin-bottom: 0;
 }   
 
-.single-project-info{
+.single-project-info, .single-project-info-not-ready{
     margin-top: 17px;
     margin-bottom: 21.25px;
+}
+.single-project-info-not-ready{
 }
 
 @media only screen and (min-width: 650px){

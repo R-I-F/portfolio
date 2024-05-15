@@ -19,7 +19,7 @@ export default function SectionFooter({name}){
                             <a 
                             href='mailto:ibrahimrefaeei@gmail.com'
                             className= {linkClass}
-                            >ibrahimrefaeei@gmail.com</a>
+                            >E-mail</a>
 
                             <a 
                             href='https://t.me/RifDev'

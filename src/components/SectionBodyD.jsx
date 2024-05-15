@@ -1,10 +1,12 @@
 import React from "react";
 import { Element } from "react-scroll";
+import { fireBaseContext } from "../context/fireBaseProvider";
 import '../../public/styles/sectionBodyD.css'
 import { FaLongArrowAltRight } from "react-icons/fa";
 import FormEl from "./FormEl";
 
 export default function SectionBodyD({name}){
+    const writeMessageToDb = React.useContext(fireBaseContext).writeMessageToDb
     const [formData, setFormData] = React.useState({
         name: '',
         email: '',
@@ -14,41 +16,46 @@ export default function SectionBodyD({name}){
     const [ isBtnHovered, setIsBtnHovered ] = React.useState(false);
 
 
+
     function handleChange(event){
-        console.log(formData)
         const { name, value } = event.target;
         setFormData(prevState => ({
-          ...prevState,
-          [name]: value
+            ...prevState,
+            [name]: value
         }));
     }
-
+    
     const handleSubmit = (event) => {
-        setIsBtnClicked(prev=>!prev)
+        setIsBtnClicked(true);
         event.preventDefault();
         // Process form data here (e.g., send it to a server)
         console.log(formData);
+        writeMessageToDb(formData.name, formData.email, formData.message)
         // Optionally, reset form fields after submission
-        setFormData({
-          name: '', 
-          email: '',
-          message: ''
-        });
+        setTimeout(()=>{
+            setFormData({
+                name: '', 
+                email: '',
+                message: ''
+            });
+            setIsBtnClicked(false);
+        },1000)
+        
     };
-
+    
     function handleHover(x){
-        console.log('hovered');
         setIsBtnHovered(x);
         return;
     }
-
+    
     function activeClassSetter(x, y){
         if(x || y){
             return ('special-btn-clicked');
         }
         else return('special-btn-not-clicked');
     }
-
+    
+    // console.log(formData)
     return(
         <Element
         name = {name}>

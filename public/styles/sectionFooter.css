@@ -32,12 +32,12 @@ p{
     letter-spacing: 4px;
 }
 .footer-info-container-2{
-    flex-basis: 30%;
+    flex-basis: 35%;
     margin-top: 32px;
     margin-left: auto;
 }
 .footer-info-container-3{
-    flex-basis: 15%;
+    flex-basis: 10%;
 }
 .footer-link-class{
     font-family: 'SF UI Text Regular', "Helvetica Neue", "Segoe UI", "Open Sans", sans-serif;

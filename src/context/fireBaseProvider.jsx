@@ -1,6 +1,6 @@
 import React from "react";
 import { initializeApp } from "firebase/app";
-import { collection, getFirestore, getDocs } from "firebase/firestore"
+import { collection, getFirestore, getDocs, addDoc } from "firebase/firestore"
 
 const fireBaseContext = React.createContext();
 
@@ -28,14 +28,24 @@ export default function FireBaseProvider ({children}){
         })
         return tempArr
       }
+      
+      async function writeMessageToDb(x, y, z){
+          const messagesRef = collection(db, "messages");
+          const res = await addDoc(messagesRef, {
+            name : x,
+            email: y,
+            message: z,
+          })
+          console.log(res);
+        }
 
+      
     return (
         <fireBaseContext.Provider 
-        value = {{getAllDocsInDb}}>
+        value = {{getAllDocsInDb, writeMessageToDb}}>
             {children}
         </fireBaseContext.Provider>
     )
-
 }
-export { fireBaseContext }
 
+export { fireBaseContext }

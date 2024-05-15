@@ -33,7 +33,7 @@ export default function PortfolioPage({homepageSection, setHomepageSection}){
     // console.log(projectsArr); 
 
     return(
-        <div>
+        <div className="portfolio-page">
             {
                 isBigScreen &&
                 <SmoothScroll 

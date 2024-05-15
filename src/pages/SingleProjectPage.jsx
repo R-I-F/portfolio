@@ -3,6 +3,7 @@ import { useLocation, Link } from "react-router-dom"
 import YouTube from "react-youtube"
 import '../../public/styles/singleProjectPage.css'
 import SingleProjectHeader from "../components/SingleProjectHeader"
+import SectionFooter from "../components/SectionFooter"
 
 export default function SingleProjectPage(){
     const projectData = useLocation().state;
@@ -91,7 +92,7 @@ export default function SingleProjectPage(){
         }
         else return(
             <>
-                <p className="single-project-info"
+                <p className="single-project-info-not-ready"
                     >Apologies for any inconvenience. The project presentation is not currently ready. You're welcome to visit the website or GitHub repository to review progress.</p>
             </>
         )
@@ -101,7 +102,7 @@ export default function SingleProjectPage(){
     function render(){
         if(projectData){
             return(
-                <div>
+                <div className="header-body">
                     <SingleProjectHeader 
                     title={projectData.name} />
         
@@ -132,6 +133,9 @@ export default function SingleProjectPage(){
     // console.log(projectData.media[0]);
 
     return(
-            render()
+        <>
+            {render()}
+            <SectionFooter />
+        </>
     )
 }

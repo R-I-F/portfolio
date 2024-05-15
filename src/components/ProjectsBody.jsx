@@ -84,14 +84,13 @@ export default function ProjectsBody(){
 
     function projectsArrEl(){
         if(projectsArr){
-            console.log('running')
             return(
                 projectsArr.map((project, index)=>{
                     return(
-                    <div
-                    key = { `project${index}` }
-                    className = "project-container"
-                    onClick = { ()=>handleNavigation(project.id, {state: {...project}}) }>
+                        <div
+                        key = { `project${index}` }
+                        className = "project-container"
+                        onClick = { ()=>handleNavigation(project.id, {state: {...project}}) }>
                         <div className="date-level">
                             <p className="project-date">{formatDate(project.date)}</p>
                             <div className="project-level">{levelEl(parseInt(project.level))}</div>
@@ -116,7 +115,8 @@ export default function ProjectsBody(){
         }
     }
 
-console.log(projectsArr);
+    // console.log(projectsArr);
+    // console.log('running')
     return(
         <section
         className="projects-body">
