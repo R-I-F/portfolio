@@ -2,6 +2,7 @@ import React from 'react'
 import MenuButton from './MenuButton'
 import MenuBar from './MenuBar'
 import { Outlet, useLocation } from 'react-router-dom'
+import { scroller, animateScroll as scroll } from 'react-scroll'
 
 export default function Navigation({homepageSection}){
     const [ isMobileScreen, setIsMobileScreen ] = React.useState(false);
@@ -11,6 +12,7 @@ export default function Navigation({homepageSection}){
 
     React.useEffect(()=>{
         setIsClicked(false)
+        scroll.scrollToTop();
         // secondary precaution: closes the menubar on route change 
         // if not closed when link is clicked
     },[location.pathname])
