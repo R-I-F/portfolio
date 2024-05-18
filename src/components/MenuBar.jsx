@@ -25,8 +25,9 @@ export default function MenuBar({clicked, setIsClicked}){
 
                 <a 
                 href='https://docs.google.com/document/d/1Xn6qbKJMXFnJBE9MRSJfYXBqyrzczCyl_-_rqB4uGFY/edit?usp=sharing'
+                target="_blank"
                 className= {linkClass}>My Resume</a>
-                
+
             </div>
 
             <p className={`${clicked ? "open" : ''}`}>SAY HELLO</p>

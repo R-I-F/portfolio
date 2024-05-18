@@ -39,7 +39,11 @@ export default function SectionFooter({name}){
                             className= {linkClass}
                             >My Work</Link>
 
-                            <Link className= {linkClass}>My Resume</Link>
+                            <a 
+                                href='https://docs.google.com/document/d/1Xn6qbKJMXFnJBE9MRSJfYXBqyrzczCyl_-_rqB4uGFY/edit?usp=sharing'
+                                target="_blank"
+                                className= {linkClass}>My Resume
+                            </a>
                         </div>
                         <div className='footer-info-container-3'></div>
                     </div>
