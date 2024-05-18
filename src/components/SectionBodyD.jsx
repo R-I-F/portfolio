@@ -127,9 +127,10 @@ export default function SectionBodyD({name}){
         }
     }
     
+    
     // console.log(formData)
     // console.log(isBtnClicked);
-    console.log(formError);
+    // console.log(formError);
     return(
         <Element
         name = {name}>

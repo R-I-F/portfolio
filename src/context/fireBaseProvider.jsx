@@ -27,22 +27,35 @@ export default function FireBaseProvider ({children}){
           tempArr.push(data);
         })
         return tempArr
-      }
+    }
+
+    async function getAllDocsInStudiesDb(){
+    
+      let tempArr = []
+      const productsRef = collection(db, "studies")
+      const querySnapshot = await getDocs(productsRef);
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        data.id = doc.id;
+        tempArr.push(data);
+      })
+      return tempArr
+  }
       
-      async function writeMessageToDb(x, y, z){
-          const messagesRef = collection(db, "messages");
-          const res = await addDoc(messagesRef, {
-            name : x,
-            email: y,
-            message: z,
-          })
-          console.log(res);
-        }
+    async function writeMessageToDb(x, y, z){
+        const messagesRef = collection(db, "messages");
+        const res = await addDoc(messagesRef, {
+          name : x,
+          email: y,
+          message: z,
+        })
+        console.log(res);
+    }
 
       
     return (
         <fireBaseContext.Provider 
-        value = {{getAllDocsInDb, writeMessageToDb}}>
+        value = {{getAllDocsInDb, writeMessageToDb, getAllDocsInStudiesDb}}>
             {children}
         </fireBaseContext.Provider>
     )

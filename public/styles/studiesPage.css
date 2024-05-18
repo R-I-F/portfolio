@@ -1,4 +1,4 @@
-.projects-page{
+.studies-page{
     background-color: #f5f4fc;
     height: 100%;
 }
@@ -31,7 +31,7 @@
     line-height: 29px;
     margin: 18px 0 22.5px;
 }
-.projects-body{
+.studies-body{
     font-family: 'SF UI Text Regular', "Helvetica Neue", "Segoe UI", "Open Sans", sans-serif;
     color: rgb(71, 71, 71);
     display: flex;
@@ -44,7 +44,7 @@
     min-height: 100vh;
 }
 
-.project-container{
+.study-container{
     cursor: pointer;
     text-decoration: none;
     color: rgb(71, 71, 71);
@@ -54,76 +54,44 @@
     flex-basis: 100%;
     height: 288px;
     display: grid;
-    grid-template-columns: auto 1fr; /* Two columns: auto width for date-level and 1fr width for the rest */
-    grid-template-rows: auto auto;
+    grid-template-columns: repeat(2, 1fr); /* Two columns: auto width for date-level and 1fr width for the rest */
+    grid-template-rows: minmax(auto, 150px) 30px 30px;
     align-items: center;
     background-color: #fbfbfb;
     transition: transform 0.3s, box-shadow 0.3s;
 }
-.project-container:hover {
+.study-container:hover {
     transform: translateY(-2%);
     box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.08);
 }
 
-.date-level{
+.title-type{
     grid-column: 1 / span 2;
-    width: 100%;
     display: flex;
-    justify-content: space-between;
-}
-.project-level{
-    color: #4831d4;
+    flex-direction: column;
 }
 
-.project-title{
+.study-title{
     font-family: 'SF UI Text Bold', "Helvetica Neue", "Segoe UI", "Open Sans", sans-serif;
     font-weight: 700;
     font-size: 22px;
     margin-top: 0;
     margin-bottom: 0;
     line-height: 34px;
-    grid-column: 1 / span 2;
-    justify-self: center;
-}
-.tech-container{
-    grid-column: 1 / span 2;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-.tech-item{
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-}
-.tech-circle{
-    margin-right: 5px;
-    border-radius: 50%;
-    width: 12px;
-    height: 12px;
-}
-.url-gh{
-    grid-column: 1 / span 2;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
-.gh, .project-url{
-    font-size: 17px;
-    line-height: 29px;
-    font-family: 'SF UI Text Regular', "Helvetica Neue", "Segoe UI", "Open Sans", sans-serif;
+.study-type-provider{
+    grid-column: 1 / span 2;
+}
+
+.study-cert{
+    grid-column: 1 / span 2;
     color: rgb(107, 23, 230);
     font-size: 17px;
     line-height: 29px;
     text-decoration: none;
 }
-.gh{
-    margin-left: auto;
 
-}
 @media only screen and (min-width: 650px){
     .projects-header-title{
         display: flex;
@@ -131,16 +99,16 @@
     } 
 }
 @media only screen and (min-width: 658px){
-    .projects-body{
+    .studies-body{
         gap: 20px;
     }
-    .project-container{
+    .study-container{
         height: 306px;
         flex-basis: 48%;
     }
 }
 @media only screen and (min-width: 938px){
-    .project-container{
+    .study-container{
         flex-basis: 31%;
     }
 }

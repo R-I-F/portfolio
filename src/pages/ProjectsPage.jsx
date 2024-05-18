@@ -8,7 +8,9 @@ export default function ProjectsPage(){
 
     return (
         <div className="projects-page">
-            <ProjectsHeader />
+            <ProjectsHeader 
+            title = "projects"
+            info = "work"/>
             <ProjectsBody />
             <SectionFooter />
         </div>

@@ -1,0 +1,34 @@
+.progress-bar-row{
+    display: flex;
+    grid-column: 1 / span 2;
+}
+.progress-bar-container{
+    flex-basis: 85%;
+    position: relative;
+    width: 100%;
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.progress-bar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f1f1f1;
+}
+
+.progress-bar-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+.progress-percent{
+    flex-basis: 15%;
+    color: black;
+    font-size: 12px;
+    text-align: right;
+}

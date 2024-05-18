@@ -20,11 +20,13 @@ export default function SectionBodyC({name}){
                     <SectionCLane 
                     title = 'I build & design Stuff'
                     info = 'Websites & WebApps'
+                    linkTo = "/projects"
                     activeClassSetter = {activeClassSetter}
                     />
                     <SectionCLane 
                     title = 'I Learn courses & books'
                     info = 'Courses, Certifications & books'
+                    linkTo = "/studies"
                     activeClassSetter = {activeClassSetter}
                     addClass = 'top-border'
                     />
