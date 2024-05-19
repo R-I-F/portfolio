@@ -1,5 +1,4 @@
 import React from "react";
-import YouTube from "react-youtube";
 import { fireBaseContext } from "../context/fireBaseProvider";
 
 export default function Projects({navLocation}){

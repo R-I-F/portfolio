@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../public/styles/sectionBodyA.css'
+import '../styles/sectionBodyA.css'
 import dotSvg1 from '/dots-1.svg'
 import dotSvg2 from '/dots-2.svg'
 import zigzag1 from '/zigzag-1.svg'

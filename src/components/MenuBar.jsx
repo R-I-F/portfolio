@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../public/styles/menuBar.css'
+import '../styles/menuBar.css'
 
 export default function MenuBar({clicked, setIsClicked}){
     const linkClass = `link ${clicked ? 'open' : ''}`

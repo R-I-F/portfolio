@@ -1,6 +1,6 @@
 import React from 'react'
 import { Element } from 'react-scroll'
-import '../../public/styles/sectionBodyC.css'
+import '../styles/sectionBodyC.css'
 import SectionCLane from './SectionCLane';
 
 export default function SectionBodyC({name}){

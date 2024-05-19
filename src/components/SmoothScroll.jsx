@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Button, Element, scroller, Events, animateScroll as scroll, scrollSpy } from 'react-scroll';
+import { scroller, Events, scrollSpy } from 'react-scroll';
 import ScrollDirectionDetector from './ScrollDirectionDetector';
 
 export default function SmoothScroll({homepageSection, setHomepageSection}){

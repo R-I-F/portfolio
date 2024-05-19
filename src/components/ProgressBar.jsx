@@ -1,5 +1,5 @@
 import React from "react"
-import '../../public/styles/progressBar.css'
+import '../styles/progressBar.css'
 
 export default function ProgressBar({progress}){
     const green = "#12921e"

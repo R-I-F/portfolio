@@ -1,7 +1,7 @@
 import React from "react";
 import { Element } from "react-scroll";
 import { fireBaseContext } from "../context/fireBaseProvider";
-import '../../public/styles/sectionBodyD.css'
+import '../styles/sectionBodyD.css'
 import { FaLongArrowAltRight } from "react-icons/fa";
 import FormEl from "./FormEl";
 

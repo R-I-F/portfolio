@@ -1,7 +1,7 @@
 import React from 'react'
 import { Element } from 'react-scroll'
 import { Link } from 'react-router-dom'
-import '../../public/styles/sectionFooter.css'
+import '../styles/sectionFooter.css'
 
 export default function SectionFooter({name}){
         const linkClass = "footer-link-class"

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 function ScrollDirectionDetector({setIsScrollingUp, setIsScrollingDown, currentScrollpos, shouldExecute, setShouldExecute}) {
     useEffect(() => {

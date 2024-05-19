@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../public/styles/sectionBodyB.css'
+import '../styles/sectionBodyB.css'
 import projects from '/projects.svg'
 import { Element } from 'react-scroll'
 export default function SectionBodyB({name}){

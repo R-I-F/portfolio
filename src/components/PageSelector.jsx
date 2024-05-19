@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../public/styles/pageSelector.css'
+import '../styles/pageSelector.css'
 import { Link, Events, animateScroll as scroll, scrollSpy } from 'react-scroll'
 
 

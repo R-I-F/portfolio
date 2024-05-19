@@ -1,7 +1,7 @@
 import React from "react"
 import { useLocation, Link } from "react-router-dom"
 import YouTube from "react-youtube"
-import '../../public/styles/singleProjectPage.css'
+import '../styles/singleProjectPage.css'
 import SingleProjectHeader from "../components/SingleProjectHeader"
 import SectionFooter from "../components/SectionFooter"
 

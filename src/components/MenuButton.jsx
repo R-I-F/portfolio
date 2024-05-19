@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../public/styles/menuButton.css'
+import '../styles/menuButton.css'
 import { useLocation } from 'react-router-dom';
 
 export default function MenuButton({clicked, setIsClicked, homepageSection, isMobileScreen}){
