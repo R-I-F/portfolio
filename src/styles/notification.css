@@ -26,8 +26,23 @@
     align-items: flex-end;
 }
 
+.form{
+    width: 340px;
+    bottom: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: flex-end;
+}
+
 .notification-exclamation{
     color: #ff8c00;
+    font-size: 14px;
+}
+
+.notification-success{
+    background-color: #00FF00;
+    color: white;
     font-size: 14px;
 }
 
@@ -41,6 +56,10 @@
     .large{
         top: 60px;
         width: 48vw;
+    }
+
+    .form{
+        bottom:5%;
     }
 
 }
@@ -62,7 +81,16 @@
         font-size: 14px;
         /* max-width: 260px; */
     }
-    .notification-exclamation{
+
+    .form{
+        width: 450px;
+        bottom: 1%;
+        padding: 8px;
+        font-size: 14px;
+        /* max-width: 260px; */
+    }
+    .notification-success{
         font-size: 20px;
     }
+
 }

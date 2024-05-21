@@ -4,6 +4,7 @@ import { fireBaseContext } from "../context/fireBaseProvider";
 import '../styles/sectionBodyD.css'
 import { FaLongArrowAltRight } from "react-icons/fa";
 import FormEl from "./FormEl";
+import Notification from "./Notification";
 
 export default function SectionBodyD({name}){
     const writeMessageToDb = React.useContext(fireBaseContext).writeMessageToDb
@@ -21,6 +22,7 @@ export default function SectionBodyD({name}){
         err4: false
     }
     const [ formError, setFormError] = React.useState(errorObj)
+    const [ formNotification, setFormNotification ] = React.useState(false)
 
 
     function handleChange(event){
@@ -42,16 +44,25 @@ export default function SectionBodyD({name}){
                     email: '',
                     message: ''
                 });
+                handleFormNotification(false);
                 setIsBtnClicked(false);
                 setIsBtnHovered(false);
             },1000)
         }
- 
+        
+        const handleFormNotification = (x) => {
+            if(x){
+                setFormNotification(x);
+            }
+            else setFormNotification(false)
+        }
+
         if(formData.name){
             if(formData.email){
                 if(formData.email.includes("@")){
                     if(formData.message.length >= 30){
                         // all fields are true
+                        handleFormNotification(true);
                         proceed()
                     }
                     else {
@@ -178,6 +189,10 @@ export default function SectionBodyD({name}){
                         </button>
                     </form>
                 </div>
+                <Notification 
+                text = "Thank you for your message. I will respond as soon as possible."
+                addClass = { formNotification? "form" : "" }
+                type = "success"/>
             </section>
         </Element>
     )

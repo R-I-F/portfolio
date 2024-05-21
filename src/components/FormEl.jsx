@@ -16,26 +16,30 @@ export default function FormEl({title, name, type, value, placeHolder, handleCha
             return(
                 <Notification 
                 text = "Please fill out this field"
-                addClass = "small"/>
+                addClass = "small"
+                type = "error"/>
             )
         }
         else if(formError.err2){
             return(
                 <Notification 
                 text = "Please fill out this field"
-                addClass = "small"/>
+                addClass = "small"
+                type = "error"/>
             )
         }
         else if(formError.err3){
             return(
                 <Notification text = "Please include @ sign"
-                addClass = "small"/>
+                addClass = "small"
+                type = "error"/>
             )
         }
         else if(formError.err4){
             return(
                 <Notification text = "messages must be larger than 30 characters long"
-                addClass = "large"/>
+                addClass = "large"
+                type = "error"/>
             )
         }
         else return(<div></div>)
